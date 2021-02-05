@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:background="#000000"
+    android:id="@+id/content_menu"
+    android:layout_height="match_parent"
+    app:layout_behavior="@string/appbar_scrolling_view_behavior">
+
+
+    <ImageView
+        android:id="@+id/imageView"
+        android:layout_width="152dp"
+        android:layout_height="152dp"
+        android:layout_marginTop="80dp"
+        android:background="#ffffff"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+    </ImageView>
+
+    <Button
+        android:id="@+id/content_menu_play"
+        android:layout_width="152dp"
+        android:layout_height="30dp"
+        android:layout_marginTop="75dp"
+        android:background="#ffffff"
+        android:text="PLAY"
+        android:textColor="#000000"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.505"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/imageView"
+        tools:ignore="MissingConstraints">
+
+    </Button>
+
+    <Button
+        android:id="@+id/content_menu_feedback"
+        android:layout_width="152dp"
+        android:layout_height="30dp"
+        android:layout_marginTop="20dp"
+        android:background="#ffffff"
+        android:text="Feedback"
+        android:textColor="#000000"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/content_menu_your_scores">
+
+    </Button>
+
+    <Button
+        android:id="@+id/content_menu_your_scores"
+        android:layout_width="152dp"
+        android:layout_height="30dp"
+        android:layout_marginTop="20dp"
+        android:background="#ffffff"
+        android:text="Your Scores"
+        android:textColor="#000000"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.501"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/content_menu_play">
+
+    </Button>
+
+    <Button
+        android:id="@+id/content_menu_quitgame"
+        android:layout_width="152dp"
+        android:layout_height="30dp"
+        android:layout_marginTop="20dp"
+        android:background="#ffffff"
+        android:text="Quit Game"
+        android:textColor="#000000"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.505"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/content_main_how_to_play"
+        app:layout_constraintVertical_bias="0.0" />
+
+    <Button
+        android:id="@+id/content_main_how_to_play"
+        android:layout_width="152dp"
+        android:layout_height="30dp"
+        android:layout_marginTop="20dp"
+        android:background="#ffffff"
+        android:text="How to play?"
+        android:textColor="#000000"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/content_menu_feedback"
+        tools:ignore="HardcodedText" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

@@ -1,0 +1,121 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/two_cross_two"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#000000"
+    tools:context=".TwoCrossTwo">
+
+    <TextView
+        android:id="@+id/two_cross_two_top_text"
+        android:layout_width="187dp"
+        android:layout_height="67dp"
+        android:layout_marginTop="88dp"
+        android:text="05:000"
+        android:gravity="center"
+        android:textColor="#26FF00"
+        android:textSize="50dp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:ignore="HardcodedText">
+
+    </TextView>
+
+    <LinearLayout
+        android:id="@+id/two_cross_two_tiles_background"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="50dp"
+        android:orientation="vertical"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.497"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/two_cross_two_top_text">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_marginBottom="10dp"
+            android:layout_height="90dp"
+            android:orientation="horizontal">
+
+
+            <Button
+                android:id="@+id/first_row_first"
+                android:layout_width="90dp"
+                android:layout_height="90dp"
+                android:layout_marginRight="10dp"
+                android:background="#785292">
+            </Button>
+
+            <Button
+                android:id="@+id/first_row_second"
+                android:layout_width="90dp"
+                android:layout_height="90dp"
+                android:background="#343453">
+            </Button>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="90dp"
+            android:orientation="horizontal">
+
+            <Button
+                android:id="@+id/second_row_first"
+                android:layout_width="90dp"
+                android:layout_height="90dp"
+
+                android:layout_marginRight="10dp"
+                android:background="#FFC107">
+            </Button>
+
+            <Button
+                android:id="@+id/second_row_second"
+                android:layout_width="90dp"
+                android:layout_height="90dp"
+                android:background="#00BCD4">
+            </Button>
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/two_cross_two_bottom_text"
+        android:layout_width="250dp"
+        android:layout_height="50dp"
+        android:layout_marginTop="60dp"
+        android:gravity="center"
+        android:text="Press start button below to begin your game"
+        android:textColor="#ffffff"
+        android:textSize="20sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.496"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/two_cross_two_tiles_background"
+        tools:ignore="HardcodedText">
+
+    </TextView>
+
+
+    <Button
+        android:id="@+id/start"
+        android:layout_width="100dp"
+        android:layout_height="40dp"
+        android:layout_marginTop="79dp"
+        android:layout_marginBottom="107dp"
+        android:background="#FFFFFF"
+        android:text="Start"
+        android:textColor="#000000"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/two_cross_two_bottom_text"></Button>
+
+</androidx.constraintlayout.widget.ConstraintLayout>
