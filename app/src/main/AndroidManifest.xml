@@ -9,13 +9,14 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".SixCrossSix"></activity>
+        <activity android:name=".CardFlip"></activity>
+        <activity android:name=".SixCrossSix" />
         <activity
             android:name=".FourCrossFour"
-            android:screenOrientation="portrait"></activity>
+            android:screenOrientation="portrait" />
         <activity
             android:name=".TwoCrossTwo"
-            android:screenOrientation="portrait"></activity>
+            android:screenOrientation="portrait" />
         <activity
             android:name=".Menu"
             android:label="@string/title_activity_menu"

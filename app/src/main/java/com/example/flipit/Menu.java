@@ -75,6 +75,8 @@ public class Menu extends AppCompatActivity {
         });
 
 
+        feedback.setOnClickListener();
+
     }
 
 }
