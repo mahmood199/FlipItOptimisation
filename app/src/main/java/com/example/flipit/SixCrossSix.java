@@ -97,30 +97,7 @@ public class SixCrossSix extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 co++;
-
-                ObjectAnimator anime1=ObjectAnimator.ofFloat(r1iv1,"scaleX",1f,0f);
-                final ObjectAnimator anime2=ObjectAnimator.ofFloat(r1iv1,"scaleX",0f,1f);
-
-                anime1.setInterpolator(new DecelerateInterpolator());
-                anime1.setDuration(100);
-
-                anime2.setInterpolator(new AccelerateInterpolator());
-                anime2.setDuration(100);
-
-                anime1.start();
-                anime1.addListener(new AnimatorListenerAdapter() {
-                    @Override
-                    public void onAnimationEnd(Animator animation) {
-                        super.onAnimationEnd(animation);
-
-                        if(r1iv1.getText().toString()=="BACK")
-                            r1iv1.setText("FRONT");
-                        else if(r1iv1.getText().toString()=="FRONT")
-                            r1iv1.setText("BACK");
-                        anime2.start();
-                    }
-                });
-
+                startAnimation(r1iv1);
                 text_below.setText("Number of times button pressed: "+co+"\n");
             }
         });
@@ -129,30 +106,7 @@ public class SixCrossSix extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 co++;
-
-                ObjectAnimator anime1=ObjectAnimator.ofFloat(r1iv2,"scaleX",1f,0f);
-                final ObjectAnimator anime2=ObjectAnimator.ofFloat(r1iv2,"scaleX",0f,1f);
-
-                anime1.setInterpolator(new DecelerateInterpolator());
-                anime1.setDuration(100);
-
-                anime2.setInterpolator(new AccelerateInterpolator());
-                anime2.setDuration(100);
-
-                anime1.start();
-                anime1.addListener(new AnimatorListenerAdapter() {
-                    @Override
-                    public void onAnimationEnd(Animator animation) {
-                        super.onAnimationEnd(animation);
-
-                        if(r1iv2.getText().toString()=="BACK")
-                            r1iv2.setText("FRONT");
-                        else if(r1iv2.getText().toString()=="FRONT")
-                            r1iv2.setText("BACK");
-                        anime2.start();
-                    }
-                });
-
+                startAnimation(r1iv2);
                 text_below.setText("Number of times button pressed: "+co+"\n");
             }
         });
@@ -161,30 +115,7 @@ public class SixCrossSix extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 co++;
-
-                ObjectAnimator anime1=ObjectAnimator.ofFloat(r1iv3,"scaleX",1f,0f);
-                final ObjectAnimator anime2=ObjectAnimator.ofFloat(r1iv3,"scaleX",0f,1f);
-
-                anime1.setInterpolator(new DecelerateInterpolator());
-                anime1.setDuration(100);
-
-                anime2.setInterpolator(new AccelerateInterpolator());
-                anime2.setDuration(100);
-
-                anime1.start();
-                anime1.addListener(new AnimatorListenerAdapter() {
-                    @Override
-                    public void onAnimationEnd(Animator animation) {
-                        super.onAnimationEnd(animation);
-
-                        if(r1iv3.getText().toString()=="BACK")
-                            r1iv3.setText("FRONT");
-                        else if(r1iv3.getText().toString()=="FRONT")
-                            r1iv3.setText("BACK");
-                        anime2.start();
-                    }
-                });
-
+                startAnimation(r1iv3);
                 text_below.setText("Number of times button pressed: "+co+"\n");
             }
         });
@@ -193,30 +124,7 @@ public class SixCrossSix extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 co++;
-
-                ObjectAnimator anime1=ObjectAnimator.ofFloat(r1iv4,"scaleX",1f,0f);
-                final ObjectAnimator anime2=ObjectAnimator.ofFloat(r1iv4,"scaleX",0f,1f);
-
-                anime1.setInterpolator(new DecelerateInterpolator());
-                anime1.setDuration(100);
-
-                anime2.setInterpolator(new AccelerateInterpolator());
-                anime2.setDuration(100);
-
-                anime1.start();
-                anime1.addListener(new AnimatorListenerAdapter() {
-                    @Override
-                    public void onAnimationEnd(Animator animation) {
-                        super.onAnimationEnd(animation);
-
-                        if(r1iv4.getText().toString()=="BACK")
-                            r1iv4.setText("FRONT");
-                        else if(r1iv4.getText().toString()=="FRONT")
-                            r1iv4.setText("BACK");
-                        anime2.start();
-                    }
-                });
-
+                startAnimation(r1iv4);
                 text_below.setText("Number of times button pressed: "+co+"\n");
             }
         });
@@ -225,30 +133,7 @@ public class SixCrossSix extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 co++;
-
-                ObjectAnimator anime1=ObjectAnimator.ofFloat(r1iv5,"scaleX",1f,0f);
-                final ObjectAnimator anime2=ObjectAnimator.ofFloat(r1iv5,"scaleX",0f,1f);
-
-                anime1.setInterpolator(new DecelerateInterpolator());
-                anime1.setDuration(100);
-
-                anime2.setInterpolator(new AccelerateInterpolator());
-                anime2.setDuration(100);
-
-                anime1.start();
-                anime1.addListener(new AnimatorListenerAdapter() {
-                    @Override
-                    public void onAnimationEnd(Animator animation) {
-                        super.onAnimationEnd(animation);
-
-                        if(r1iv5.getText().toString()=="BACK")
-                            r1iv5.setText("FRONT");
-                        else if(r1iv5.getText().toString()=="FRONT")
-                            r1iv5.setText("BACK");
-                        anime2.start();
-                    }
-                });
-
+                startAnimation(r1iv5);
                 text_below.setText("Number of times button pressed: "+co+"\n");
             }
         });
@@ -257,30 +142,7 @@ public class SixCrossSix extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 co++;
-
-                ObjectAnimator anime1=ObjectAnimator.ofFloat(r1iv6,"scaleX",1f,0f);
-                final ObjectAnimator anime2=ObjectAnimator.ofFloat(r1iv6,"scaleX",0f,1f);
-
-                anime1.setInterpolator(new DecelerateInterpolator());
-                anime1.setDuration(100);
-
-                anime2.setInterpolator(new AccelerateInterpolator());
-                anime2.setDuration(100);
-
-                anime1.start();
-                anime1.addListener(new AnimatorListenerAdapter() {
-                    @Override
-                    public void onAnimationEnd(Animator animation) {
-                        super.onAnimationEnd(animation);
-
-                        if(r1iv6.getText().toString()=="BACK")
-                            r1iv6.setText("FRONT");
-                        else if(r1iv6.getText().toString()=="FRONT")
-                            r1iv6.setText("BACK");
-                        anime2.start();
-                    }
-                });
-
+                startAnimation(r1iv6);
                 text_below.setText("Number of times button pressed: "+co+"\n");
             }
         });
@@ -290,30 +152,7 @@ public class SixCrossSix extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 co++;
-
-                ObjectAnimator anime1=ObjectAnimator.ofFloat(r2iv1,"scaleX",1f,0f);
-                final ObjectAnimator anime2=ObjectAnimator.ofFloat(r2iv1,"scaleX",0f,1f);
-
-                anime1.setInterpolator(new DecelerateInterpolator());
-                anime1.setDuration(100);
-
-                anime2.setInterpolator(new AccelerateInterpolator());
-                anime2.setDuration(100);
-
-                anime1.start();
-                anime1.addListener(new AnimatorListenerAdapter() {
-                    @Override
-                    public void onAnimationEnd(Animator animation) {
-                        super.onAnimationEnd(animation);
-
-                        if(r2iv1.getText().toString()=="BACK")
-                            r2iv1.setText("FRONT");
-                        else if(r2iv1.getText().toString()=="FRONT")
-                            r2iv1.setText("BACK");
-                        anime2.start();
-                    }
-                });
-
+                startAnimation(r2iv1);
                 text_below.setText("Number of times button pressed: "+co+"\n");
             }
         });
@@ -322,30 +161,7 @@ public class SixCrossSix extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 co++;
-
-                ObjectAnimator anime1=ObjectAnimator.ofFloat(r2iv2,"scaleX",1f,0f);
-                final ObjectAnimator anime2=ObjectAnimator.ofFloat(r2iv2,"scaleX",0f,1f);
-
-                anime1.setInterpolator(new DecelerateInterpolator());
-                anime1.setDuration(100);
-
-                anime2.setInterpolator(new AccelerateInterpolator());
-                anime2.setDuration(100);
-
-                anime1.start();
-                anime1.addListener(new AnimatorListenerAdapter() {
-                    @Override
-                    public void onAnimationEnd(Animator animation) {
-                        super.onAnimationEnd(animation);
-
-                        if(r2iv2.getText().toString()=="BACK")
-                            r2iv2.setText("FRONT");
-                        else if(r2iv2.getText().toString()=="FRONT")
-                            r2iv2.setText("BACK");
-                        anime2.start();
-                    }
-                });
-
+                startAnimation(r2iv2);
                 text_below.setText("Number of times button pressed: "+co+"\n");
             }
         });
@@ -354,30 +170,7 @@ public class SixCrossSix extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 co++;
-
-                ObjectAnimator anime1=ObjectAnimator.ofFloat(r2iv3,"scaleX",1f,0f);
-                final ObjectAnimator anime2=ObjectAnimator.ofFloat(r2iv3,"scaleX",0f,1f);
-
-                anime1.setInterpolator(new DecelerateInterpolator());
-                anime1.setDuration(100);
-
-                anime2.setInterpolator(new AccelerateInterpolator());
-                anime2.setDuration(100);
-
-                anime1.start();
-                anime1.addListener(new AnimatorListenerAdapter() {
-                    @Override
-                    public void onAnimationEnd(Animator animation) {
-                        super.onAnimationEnd(animation);
-
-                        if(r2iv3.getText().toString()=="BACK")
-                            r2iv3.setText("FRONT");
-                        else if(r2iv3.getText().toString()=="FRONT")
-                            r2iv3.setText("BACK");
-                        anime2.start();
-                    }
-                });
-
+                startAnimation(r2iv3);
                 text_below.setText("Number of times button pressed: "+co+"\n");
             }
         });
@@ -386,30 +179,7 @@ public class SixCrossSix extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 co++;
-
-                ObjectAnimator anime1=ObjectAnimator.ofFloat(r2iv4,"scaleX",1f,0f);
-                final ObjectAnimator anime2=ObjectAnimator.ofFloat(r2iv4,"scaleX",0f,1f);
-
-                anime1.setInterpolator(new DecelerateInterpolator());
-                anime1.setDuration(100);
-
-                anime2.setInterpolator(new AccelerateInterpolator());
-                anime2.setDuration(100);
-
-                anime1.start();
-                anime1.addListener(new AnimatorListenerAdapter() {
-                    @Override
-                    public void onAnimationEnd(Animator animation) {
-                        super.onAnimationEnd(animation);
-
-                        if(r2iv4.getText().toString()=="BACK")
-                            r2iv4.setText("FRONT");
-                        else if(r2iv4.getText().toString()=="FRONT")
-                            r2iv4.setText("BACK");
-                        anime2.start();
-                    }
-                });
-
+                startAnimation(r2iv4);
                 text_below.setText("Number of times button pressed: "+co+"\n");
             }
         });
@@ -418,30 +188,7 @@ public class SixCrossSix extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 co++;
-
-                ObjectAnimator anime1=ObjectAnimator.ofFloat(r2iv5,"scaleX",1f,0f);
-                final ObjectAnimator anime2=ObjectAnimator.ofFloat(r2iv5,"scaleX",0f,1f);
-
-                anime1.setInterpolator(new DecelerateInterpolator());
-                anime1.setDuration(100);
-
-                anime2.setInterpolator(new AccelerateInterpolator());
-                anime2.setDuration(100);
-
-                anime1.start();
-                anime1.addListener(new AnimatorListenerAdapter() {
-                    @Override
-                    public void onAnimationEnd(Animator animation) {
-                        super.onAnimationEnd(animation);
-
-                        if(r2iv5.getText().toString()=="BACK")
-                            r2iv5.setText("FRONT");
-                        else if(r2iv5.getText().toString()=="FRONT")
-                            r2iv5.setText("BACK");
-                        anime2.start();
-                    }
-                });
-
+                startAnimation(r2iv5);
                 text_below.setText("Number of times button pressed: "+co+"\n");
             }
         });
@@ -450,30 +197,7 @@ public class SixCrossSix extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 co++;
-
-                ObjectAnimator anime1=ObjectAnimator.ofFloat(r2iv6,"scaleX",1f,0f);
-                final ObjectAnimator anime2=ObjectAnimator.ofFloat(r2iv6,"scaleX",0f,1f);
-
-                anime1.setInterpolator(new DecelerateInterpolator());
-                anime1.setDuration(100);
-
-                anime2.setInterpolator(new AccelerateInterpolator());
-                anime2.setDuration(100);
-
-                anime1.start();
-                anime1.addListener(new AnimatorListenerAdapter() {
-                    @Override
-                    public void onAnimationEnd(Animator animation) {
-                        super.onAnimationEnd(animation);
-
-                        if(r2iv6.getText().toString()=="BACK")
-                            r2iv6.setText("FRONT");
-                        else if(r2iv6.getText().toString()=="FRONT")
-                            r2iv6.setText("BACK");
-                        anime2.start();
-                    }
-                });
-
+                startAnimation(r2iv6);
                 text_below.setText("Number of times button pressed: "+co+"\n");
             }
         });
@@ -483,30 +207,7 @@ public class SixCrossSix extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 co++;
-
-                ObjectAnimator anime1=ObjectAnimator.ofFloat(r3iv1,"scaleX",1f,0f);
-                final ObjectAnimator anime2=ObjectAnimator.ofFloat(r3iv1,"scaleX",0f,1f);
-
-                anime1.setInterpolator(new DecelerateInterpolator());
-                anime1.setDuration(100);
-
-                anime2.setInterpolator(new AccelerateInterpolator());
-                anime2.setDuration(100);
-
-                anime1.start();
-                anime1.addListener(new AnimatorListenerAdapter() {
-                    @Override
-                    public void onAnimationEnd(Animator animation) {
-                        super.onAnimationEnd(animation);
-
-                        if(r3iv1.getText().toString()=="BACK")
-                            r3iv1.setText("FRONT");
-                        else if(r3iv1.getText().toString()=="FRONT")
-                            r3iv1.setText("BACK");
-                        anime2.start();
-                    }
-                });
-
+                startAnimation(r3iv1);
                 text_below.setText("Number of times button pressed: "+co+"\n");
             }
         });
@@ -515,30 +216,7 @@ public class SixCrossSix extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 co++;
-
-                ObjectAnimator anime1=ObjectAnimator.ofFloat(r3iv2,"scaleX",1f,0f);
-                final ObjectAnimator anime2=ObjectAnimator.ofFloat(r3iv2,"scaleX",0f,1f);
-
-                anime1.setInterpolator(new DecelerateInterpolator());
-                anime1.setDuration(100);
-
-                anime2.setInterpolator(new AccelerateInterpolator());
-                anime2.setDuration(100);
-
-                anime1.start();
-                anime1.addListener(new AnimatorListenerAdapter() {
-                    @Override
-                    public void onAnimationEnd(Animator animation) {
-                        super.onAnimationEnd(animation);
-
-                        if(r3iv2.getText().toString()=="BACK")
-                            r3iv2.setText("FRONT");
-                        else if(r3iv2.getText().toString()=="FRONT")
-                            r3iv2.setText("BACK");
-                        anime2.start();
-                    }
-                });
-
+                startAnimation(r3iv2);
                 text_below.setText("Number of times button pressed: "+co+"\n");
             }
         });
@@ -547,30 +225,7 @@ public class SixCrossSix extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 co++;
-
-                ObjectAnimator anime1=ObjectAnimator.ofFloat(r3iv3,"scaleX",1f,0f);
-                final ObjectAnimator anime2=ObjectAnimator.ofFloat(r3iv3,"scaleX",0f,1f);
-
-                anime1.setInterpolator(new DecelerateInterpolator());
-                anime1.setDuration(100);
-
-                anime2.setInterpolator(new AccelerateInterpolator());
-                anime2.setDuration(100);
-
-                anime1.start();
-                anime1.addListener(new AnimatorListenerAdapter() {
-                    @Override
-                    public void onAnimationEnd(Animator animation) {
-                        super.onAnimationEnd(animation);
-
-                        if(r3iv3.getText().toString()=="BACK")
-                            r3iv3.setText("FRONT");
-                        else if(r3iv3.getText().toString()=="FRONT")
-                            r3iv3.setText("BACK");
-                        anime2.start();
-                    }
-                });
-
+                startAnimation(r3iv3);
                 text_below.setText("Number of times button pressed: "+co+"\n");
             }
         });
@@ -579,30 +234,7 @@ public class SixCrossSix extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 co++;
-
-                ObjectAnimator anime1=ObjectAnimator.ofFloat(r3iv4,"scaleX",1f,0f);
-                final ObjectAnimator anime2=ObjectAnimator.ofFloat(r3iv4,"scaleX",0f,1f);
-
-                anime1.setInterpolator(new DecelerateInterpolator());
-                anime1.setDuration(100);
-
-                anime2.setInterpolator(new AccelerateInterpolator());
-                anime2.setDuration(100);
-
-                anime1.start();
-                anime1.addListener(new AnimatorListenerAdapter() {
-                    @Override
-                    public void onAnimationEnd(Animator animation) {
-                        super.onAnimationEnd(animation);
-
-                        if(r3iv4.getText().toString()=="BACK")
-                            r3iv4.setText("FRONT");
-                        else if(r3iv4.getText().toString()=="FRONT")
-                            r3iv4.setText("BACK");
-                        anime2.start();
-                    }
-                });
-
+                startAnimation(r3iv4);
                 text_below.setText("Number of times button pressed: "+co+"\n");
             }
         });
@@ -611,96 +243,27 @@ public class SixCrossSix extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 co++;
-
-                ObjectAnimator anime1=ObjectAnimator.ofFloat(r3iv5,"scaleX",1f,0f);
-                final ObjectAnimator anime2=ObjectAnimator.ofFloat(r3iv5,"scaleX",0f,1f);
-
-                anime1.setInterpolator(new DecelerateInterpolator());
-                anime1.setDuration(100);
-
-                anime2.setInterpolator(new AccelerateInterpolator());
-                anime2.setDuration(100);
-
-                anime1.start();
-                anime1.addListener(new AnimatorListenerAdapter() {
-                    @Override
-                    public void onAnimationEnd(Animator animation) {
-                        super.onAnimationEnd(animation);
-
-                        if(r3iv5.getText().toString()=="BACK")
-                            r3iv5.setText("FRONT");
-                        else if(r3iv5.getText().toString()=="FRONT")
-                            r3iv5.setText("BACK");
-                        anime2.start();
-                    }
-                });
-
+                startAnimation(r3iv5);
                 text_below.setText("Number of times button pressed: "+co+"\n");
             }
         });
+
 
         r3iv6.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 co++;
-
-                ObjectAnimator anime1=ObjectAnimator.ofFloat(r3iv6,"scaleX",1f,0f);
-                final ObjectAnimator anime2=ObjectAnimator.ofFloat(r3iv6,"scaleX",0f,1f);
-
-                anime1.setInterpolator(new DecelerateInterpolator());
-                anime1.setDuration(100);
-
-                anime2.setInterpolator(new AccelerateInterpolator());
-                anime2.setDuration(100);
-
-                anime1.start();
-                anime1.addListener(new AnimatorListenerAdapter() {
-                    @Override
-                    public void onAnimationEnd(Animator animation) {
-                        super.onAnimationEnd(animation);
-
-                        if(r3iv6.getText().toString()=="BACK")
-                            r3iv6.setText("FRONT");
-                        else if(r3iv6.getText().toString()=="FRONT")
-                            r3iv6.setText("BACK");
-                        anime2.start();
-                    }
-                });
-
+                startAnimation(r3iv6);
                 text_below.setText("Number of times button pressed: "+co+"\n");
             }
         });
-
 
 
         r4iv1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 co++;
-
-                ObjectAnimator anime1=ObjectAnimator.ofFloat(r4iv1,"scaleX",1f,0f);
-                final ObjectAnimator anime2=ObjectAnimator.ofFloat(r4iv1,"scaleX",0f,1f);
-
-                anime1.setInterpolator(new DecelerateInterpolator());
-                anime1.setDuration(100);
-
-                anime2.setInterpolator(new AccelerateInterpolator());
-                anime2.setDuration(100);
-
-                anime1.start();
-                anime1.addListener(new AnimatorListenerAdapter() {
-                    @Override
-                    public void onAnimationEnd(Animator animation) {
-                        super.onAnimationEnd(animation);
-
-                        if(r4iv1.getText().toString()=="BACK")
-                            r4iv1.setText("FRONT");
-                        else if(r4iv1.getText().toString()=="FRONT")
-                            r4iv1.setText("BACK");
-                        anime2.start();
-                    }
-                });
-
+                startAnimation(r4iv1);
                 text_below.setText("Number of times button pressed: "+co+"\n");
             }
         });
@@ -709,30 +272,7 @@ public class SixCrossSix extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 co++;
-
-                ObjectAnimator anime1=ObjectAnimator.ofFloat(r4iv2,"scaleX",1f,0f);
-                final ObjectAnimator anime2=ObjectAnimator.ofFloat(r4iv2,"scaleX",0f,1f);
-
-                anime1.setInterpolator(new DecelerateInterpolator());
-                anime1.setDuration(100);
-
-                anime2.setInterpolator(new AccelerateInterpolator());
-                anime2.setDuration(100);
-
-                anime1.start();
-                anime1.addListener(new AnimatorListenerAdapter() {
-                    @Override
-                    public void onAnimationEnd(Animator animation) {
-                        super.onAnimationEnd(animation);
-
-                        if(r4iv2.getText().toString()=="BACK")
-                            r4iv2.setText("FRONT");
-                        else if(r4iv2.getText().toString()=="FRONT")
-                            r4iv2.setText("BACK");
-                        anime2.start();
-                    }
-                });
-
+                startAnimation(r4iv2);
                 text_below.setText("Number of times button pressed: "+co+"\n");
             }
         });
@@ -741,30 +281,7 @@ public class SixCrossSix extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 co++;
-
-                ObjectAnimator anime1=ObjectAnimator.ofFloat(r4iv3,"scaleX",1f,0f);
-                final ObjectAnimator anime2=ObjectAnimator.ofFloat(r4iv3,"scaleX",0f,1f);
-
-                anime1.setInterpolator(new DecelerateInterpolator());
-                anime1.setDuration(100);
-
-                anime2.setInterpolator(new AccelerateInterpolator());
-                anime2.setDuration(100);
-
-                anime1.start();
-                anime1.addListener(new AnimatorListenerAdapter() {
-                    @Override
-                    public void onAnimationEnd(Animator animation) {
-                        super.onAnimationEnd(animation);
-
-                        if(r4iv3.getText().toString()=="BACK")
-                            r4iv3.setText("FRONT");
-                        else if(r4iv3.getText().toString()=="FRONT")
-                            r4iv3.setText("BACK");
-                        anime2.start();
-                    }
-                });
-
+                startAnimation(r4iv3);
                 text_below.setText("Number of times button pressed: "+co+"\n");
             }
         });
@@ -773,30 +290,7 @@ public class SixCrossSix extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 co++;
-
-                ObjectAnimator anime1=ObjectAnimator.ofFloat(r4iv4,"scaleX",1f,0f);
-                final ObjectAnimator anime2=ObjectAnimator.ofFloat(r4iv4,"scaleX",0f,1f);
-
-                anime1.setInterpolator(new DecelerateInterpolator());
-                anime1.setDuration(100);
-
-                anime2.setInterpolator(new AccelerateInterpolator());
-                anime2.setDuration(100);
-
-                anime1.start();
-                anime1.addListener(new AnimatorListenerAdapter() {
-                    @Override
-                    public void onAnimationEnd(Animator animation) {
-                        super.onAnimationEnd(animation);
-
-                        if(r4iv4.getText().toString()=="BACK")
-                            r4iv4.setText("FRONT");
-                        else if(r4iv4.getText().toString()=="FRONT")
-                            r4iv4.setText("BACK");
-                        anime2.start();
-                    }
-                });
-
+                startAnimation(r4iv4);
                 text_below.setText("Number of times button pressed: "+co+"\n");
             }
         });
@@ -805,30 +299,7 @@ public class SixCrossSix extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 co++;
-
-                ObjectAnimator anime1=ObjectAnimator.ofFloat(r4iv5,"scaleX",1f,0f);
-                final ObjectAnimator anime2=ObjectAnimator.ofFloat(r4iv5,"scaleX",0f,1f);
-
-                anime1.setInterpolator(new DecelerateInterpolator());
-                anime1.setDuration(100);
-
-                anime2.setInterpolator(new AccelerateInterpolator());
-                anime2.setDuration(100);
-
-                anime1.start();
-                anime1.addListener(new AnimatorListenerAdapter() {
-                    @Override
-                    public void onAnimationEnd(Animator animation) {
-                        super.onAnimationEnd(animation);
-
-                        if(r4iv5.getText().toString()=="BACK")
-                            r4iv5.setText("FRONT");
-                        else if(r4iv5.getText().toString()=="FRONT")
-                            r4iv5.setText("BACK");
-                        anime2.start();
-                    }
-                });
-
+                startAnimation(r4iv5);
                 text_below.setText("Number of times button pressed: "+co+"\n");
             }
         });
@@ -837,30 +308,7 @@ public class SixCrossSix extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 co++;
-
-                ObjectAnimator anime1=ObjectAnimator.ofFloat(r4iv6,"scaleX",1f,0f);
-                final ObjectAnimator anime2=ObjectAnimator.ofFloat(r4iv6,"scaleX",0f,1f);
-
-                anime1.setInterpolator(new DecelerateInterpolator());
-                anime1.setDuration(100);
-
-                anime2.setInterpolator(new AccelerateInterpolator());
-                anime2.setDuration(100);
-
-                anime1.start();
-                anime1.addListener(new AnimatorListenerAdapter() {
-                    @Override
-                    public void onAnimationEnd(Animator animation) {
-                        super.onAnimationEnd(animation);
-
-                        if(r4iv6.getText().toString()=="BACK")
-                            r4iv6.setText("FRONT");
-                        else if(r4iv6.getText().toString()=="FRONT")
-                            r4iv6.setText("BACK");
-                        anime2.start();
-                    }
-                });
-
+                startAnimation(r4iv6);
                 text_below.setText("Number of times button pressed: "+co+"\n");
             }
         });
@@ -871,30 +319,7 @@ public class SixCrossSix extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 co++;
-
-                ObjectAnimator anime1=ObjectAnimator.ofFloat(r5iv1,"scaleX",1f,0f);
-                final ObjectAnimator anime2=ObjectAnimator.ofFloat(r5iv1,"scaleX",0f,1f);
-
-                anime1.setInterpolator(new DecelerateInterpolator());
-                anime1.setDuration(100);
-
-                anime2.setInterpolator(new AccelerateInterpolator());
-                anime2.setDuration(100);
-
-                anime1.start();
-                anime1.addListener(new AnimatorListenerAdapter() {
-                    @Override
-                    public void onAnimationEnd(Animator animation) {
-                        super.onAnimationEnd(animation);
-
-                        if(r5iv1.getText().toString()=="BACK")
-                            r5iv1.setText("FRONT");
-                        else if(r5iv1.getText().toString()=="FRONT")
-                            r5iv1.setText("BACK");
-                        anime2.start();
-                    }
-                });
-
+                startAnimation(r5iv1);
                 text_below.setText("Number of times button pressed: "+co+"\n");
             }
         });
@@ -903,30 +328,7 @@ public class SixCrossSix extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 co++;
-
-                ObjectAnimator anime1=ObjectAnimator.ofFloat(r5iv2,"scaleX",1f,0f);
-                final ObjectAnimator anime2=ObjectAnimator.ofFloat(r5iv2,"scaleX",0f,1f);
-
-                anime1.setInterpolator(new DecelerateInterpolator());
-                anime1.setDuration(100);
-
-                anime2.setInterpolator(new AccelerateInterpolator());
-                anime2.setDuration(100);
-
-                anime1.start();
-                anime1.addListener(new AnimatorListenerAdapter() {
-                    @Override
-                    public void onAnimationEnd(Animator animation) {
-                        super.onAnimationEnd(animation);
-
-                        if(r5iv2.getText().toString()=="BACK")
-                            r5iv2.setText("FRONT");
-                        else if(r5iv2.getText().toString()=="FRONT")
-                            r5iv2.setText("BACK");
-                        anime2.start();
-                    }
-                });
-
+                startAnimation(r5iv2);
                 text_below.setText("Number of times button pressed: "+co+"\n");
             }
         });
@@ -935,30 +337,7 @@ public class SixCrossSix extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 co++;
-
-                ObjectAnimator anime1=ObjectAnimator.ofFloat(r5iv3,"scaleX",1f,0f);
-                final ObjectAnimator anime2=ObjectAnimator.ofFloat(r5iv3,"scaleX",0f,1f);
-
-                anime1.setInterpolator(new DecelerateInterpolator());
-                anime1.setDuration(100);
-
-                anime2.setInterpolator(new AccelerateInterpolator());
-                anime2.setDuration(100);
-
-                anime1.start();
-                anime1.addListener(new AnimatorListenerAdapter() {
-                    @Override
-                    public void onAnimationEnd(Animator animation) {
-                        super.onAnimationEnd(animation);
-
-                        if(r5iv3.getText().toString()=="BACK")
-                            r5iv3.setText("FRONT");
-                        else if(r5iv3.getText().toString()=="FRONT")
-                            r5iv3.setText("BACK");
-                        anime2.start();
-                    }
-                });
-
+                startAnimation(r5iv3);
                 text_below.setText("Number of times button pressed: "+co+"\n");
             }
         });
@@ -967,30 +346,7 @@ public class SixCrossSix extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 co++;
-
-                ObjectAnimator anime1=ObjectAnimator.ofFloat(r5iv4,"scaleX",1f,0f);
-                final ObjectAnimator anime2=ObjectAnimator.ofFloat(r5iv4,"scaleX",0f,1f);
-
-                anime1.setInterpolator(new DecelerateInterpolator());
-                anime1.setDuration(100);
-
-                anime2.setInterpolator(new AccelerateInterpolator());
-                anime2.setDuration(100);
-
-                anime1.start();
-                anime1.addListener(new AnimatorListenerAdapter() {
-                    @Override
-                    public void onAnimationEnd(Animator animation) {
-                        super.onAnimationEnd(animation);
-
-                        if(r5iv4.getText().toString()=="BACK")
-                            r5iv4.setText("FRONT");
-                        else if(r5iv4.getText().toString()=="FRONT")
-                            r5iv4.setText("BACK");
-                        anime2.start();
-                    }
-                });
-
+                startAnimation(r5iv4);
                 text_below.setText("Number of times button pressed: "+co+"\n");
             }
         });
@@ -999,30 +355,7 @@ public class SixCrossSix extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 co++;
-
-                ObjectAnimator anime1=ObjectAnimator.ofFloat(r5iv5,"scaleX",1f,0f);
-                final ObjectAnimator anime2=ObjectAnimator.ofFloat(r5iv5,"scaleX",0f,1f);
-
-                anime1.setInterpolator(new DecelerateInterpolator());
-                anime1.setDuration(100);
-
-                anime2.setInterpolator(new AccelerateInterpolator());
-                anime2.setDuration(100);
-
-                anime1.start();
-                anime1.addListener(new AnimatorListenerAdapter() {
-                    @Override
-                    public void onAnimationEnd(Animator animation) {
-                        super.onAnimationEnd(animation);
-
-                        if(r5iv5.getText().toString()=="BACK")
-                            r5iv5.setText("FRONT");
-                        else if(r5iv5.getText().toString()=="FRONT")
-                            r5iv5.setText("BACK");
-                        anime2.start();
-                    }
-                });
-
+                startAnimation(r5iv5);
                 text_below.setText("Number of times button pressed: "+co+"\n");
             }
         });
@@ -1031,30 +364,7 @@ public class SixCrossSix extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 co++;
-
-                ObjectAnimator anime1=ObjectAnimator.ofFloat(r5iv6,"scaleX",1f,0f);
-                final ObjectAnimator anime2=ObjectAnimator.ofFloat(r5iv6,"scaleX",0f,1f);
-
-                anime1.setInterpolator(new DecelerateInterpolator());
-                anime1.setDuration(100);
-
-                anime2.setInterpolator(new AccelerateInterpolator());
-                anime2.setDuration(100);
-
-                anime1.start();
-                anime1.addListener(new AnimatorListenerAdapter() {
-                    @Override
-                    public void onAnimationEnd(Animator animation) {
-                        super.onAnimationEnd(animation);
-
-                        if(r5iv6.getText().toString()=="BACK")
-                            r5iv6.setText("FRONT");
-                        else if(r5iv6.getText().toString()=="FRONT")
-                            r5iv6.setText("BACK");
-                        anime2.start();
-                    }
-                });
-
+                startAnimation(r5iv6);
                 text_below.setText("Number of times button pressed: "+co+"\n");
             }
         });
@@ -1066,30 +376,7 @@ public class SixCrossSix extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 co++;
-
-                ObjectAnimator anime1=ObjectAnimator.ofFloat(r6iv1,"scaleX",1f,0f);
-                final ObjectAnimator anime2=ObjectAnimator.ofFloat(r6iv1,"scaleX",0f,1f);
-
-                anime1.setInterpolator(new DecelerateInterpolator());
-                anime1.setDuration(100);
-
-                anime2.setInterpolator(new AccelerateInterpolator());
-                anime2.setDuration(100);
-
-                anime1.start();
-                anime1.addListener(new AnimatorListenerAdapter() {
-                    @Override
-                    public void onAnimationEnd(Animator animation) {
-                        super.onAnimationEnd(animation);
-
-                        if(r6iv1.getText().toString()=="BACK")
-                            r6iv1.setText("FRONT");
-                        else if(r6iv1.getText().toString()=="FRONT")
-                            r6iv1.setText("BACK");
-                        anime2.start();
-                    }
-                });
-
+                startAnimation(r6iv1);
                 text_below.setText("Number of times button pressed: "+co+"\n");
             }
         });
@@ -1098,30 +385,7 @@ public class SixCrossSix extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 co++;
-
-                ObjectAnimator anime1=ObjectAnimator.ofFloat(r6iv2,"scaleX",1f,0f);
-                final ObjectAnimator anime2=ObjectAnimator.ofFloat(r6iv2,"scaleX",0f,1f);
-
-                anime1.setInterpolator(new DecelerateInterpolator());
-                anime1.setDuration(100);
-
-                anime2.setInterpolator(new AccelerateInterpolator());
-                anime2.setDuration(100);
-
-                anime1.start();
-                anime1.addListener(new AnimatorListenerAdapter() {
-                    @Override
-                    public void onAnimationEnd(Animator animation) {
-                        super.onAnimationEnd(animation);
-
-                        if(r6iv2.getText().toString()=="BACK")
-                            r6iv2.setText("FRONT");
-                        else if(r6iv2.getText().toString()=="FRONT")
-                            r6iv2.setText("BACK");
-                        anime2.start();
-                    }
-                });
-
+                startAnimation(r6iv2);
                 text_below.setText("Number of times button pressed: "+co+"\n");
             }
         });
@@ -1130,30 +394,7 @@ public class SixCrossSix extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 co++;
-
-                ObjectAnimator anime1=ObjectAnimator.ofFloat(r6iv3,"scaleX",1f,0f);
-                final ObjectAnimator anime2=ObjectAnimator.ofFloat(r6iv3,"scaleX",0f,1f);
-
-                anime1.setInterpolator(new DecelerateInterpolator());
-                anime1.setDuration(100);
-
-                anime2.setInterpolator(new AccelerateInterpolator());
-                anime2.setDuration(100);
-
-                anime1.start();
-                anime1.addListener(new AnimatorListenerAdapter() {
-                    @Override
-                    public void onAnimationEnd(Animator animation) {
-                        super.onAnimationEnd(animation);
-
-                        if(r6iv3.getText().toString()=="BACK")
-                            r6iv3.setText("FRONT");
-                        else if(r6iv3.getText().toString()=="FRONT")
-                            r6iv3.setText("BACK");
-                        anime2.start();
-                    }
-                });
-
+                startAnimation(r6iv3);
                 text_below.setText("Number of times button pressed: "+co+"\n");
             }
         });
@@ -1162,30 +403,7 @@ public class SixCrossSix extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 co++;
-
-                ObjectAnimator anime1=ObjectAnimator.ofFloat(r6iv4,"scaleX",1f,0f);
-                final ObjectAnimator anime2=ObjectAnimator.ofFloat(r6iv4,"scaleX",0f,1f);
-
-                anime1.setInterpolator(new DecelerateInterpolator());
-                anime1.setDuration(100);
-
-                anime2.setInterpolator(new AccelerateInterpolator());
-                anime2.setDuration(100);
-
-                anime1.start();
-                anime1.addListener(new AnimatorListenerAdapter() {
-                    @Override
-                    public void onAnimationEnd(Animator animation) {
-                        super.onAnimationEnd(animation);
-
-                        if(r6iv4.getText().toString()=="BACK")
-                            r6iv4.setText("FRONT");
-                        else if(r6iv4.getText().toString()=="FRONT")
-                            r6iv4.setText("BACK");
-                        anime2.start();
-                    }
-                });
-
+                startAnimation(r6iv4);
                 text_below.setText("Number of times button pressed: "+co+"\n");
             }
         });
@@ -1194,30 +412,7 @@ public class SixCrossSix extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 co++;
-
-                ObjectAnimator anime1=ObjectAnimator.ofFloat(r6iv5,"scaleX",1f,0f);
-                final ObjectAnimator anime2=ObjectAnimator.ofFloat(r6iv5,"scaleX",0f,1f);
-
-                anime1.setInterpolator(new DecelerateInterpolator());
-                anime1.setDuration(100);
-
-                anime2.setInterpolator(new AccelerateInterpolator());
-                anime2.setDuration(100);
-
-                anime1.start();
-                anime1.addListener(new AnimatorListenerAdapter() {
-                    @Override
-                    public void onAnimationEnd(Animator animation) {
-                        super.onAnimationEnd(animation);
-
-                        if(r6iv5.getText().toString()=="BACK")
-                            r6iv5.setText("FRONT");
-                        else if(r6iv5.getText().toString()=="FRONT")
-                            r6iv5.setText("BACK");
-                        anime2.start();
-                    }
-                });
-
+                startAnimation(r6iv5);
                 text_below.setText("Number of times button pressed: "+co+"\n");
             }
         });
@@ -1226,30 +421,7 @@ public class SixCrossSix extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 co++;
-
-                ObjectAnimator anime1=ObjectAnimator.ofFloat(r6iv6,"scaleX",1f,0f);
-                final ObjectAnimator anime2=ObjectAnimator.ofFloat(r6iv6,"scaleX",0f,1f);
-
-                anime1.setInterpolator(new DecelerateInterpolator());
-                anime1.setDuration(100);
-
-                anime2.setInterpolator(new AccelerateInterpolator());
-                anime2.setDuration(100);
-
-                anime1.start();
-                anime1.addListener(new AnimatorListenerAdapter() {
-                    @Override
-                    public void onAnimationEnd(Animator animation) {
-                        super.onAnimationEnd(animation);
-
-                        if(r6iv6.getText().toString()=="BACK")
-                            r6iv6.setText("FRONT");
-                        else if(r6iv6.getText().toString()=="FRONT")
-                            r6iv6.setText("BACK");
-                        anime2.start();
-                    }
-                });
-
+                startAnimation(r6iv6);
                 text_below.setText("Number of times button pressed: "+co+"\n");
             }
         });
@@ -1271,6 +443,31 @@ public class SixCrossSix extends AppCompatActivity {
             }
         });
 
+    }
+
+    void startAnimation(final Button XYZ) {
+        ObjectAnimator anime1=ObjectAnimator.ofFloat(XYZ,"scaleX",1f,0f);
+        final ObjectAnimator anime2=ObjectAnimator.ofFloat(XYZ,"scaleX",0f,1f);
+
+        anime1.setInterpolator(new DecelerateInterpolator());
+        anime1.setDuration(100);
+
+        anime2.setInterpolator(new AccelerateInterpolator());
+        anime2.setDuration(100);
+
+        anime1.start();
+        anime1.addListener(new AnimatorListenerAdapter() {
+            @Override
+            public void onAnimationEnd(Animator animation) {
+                super.onAnimationEnd(animation);
+
+                if(XYZ.getText().toString()=="BACK")
+                    XYZ.setText("FRONT");
+                else if(XYZ.getText().toString()=="FRONT")
+                    XYZ.setText("BACK");
+                anime2.start();
+            }
+        });
     }
 
     public void onBackPressed(){

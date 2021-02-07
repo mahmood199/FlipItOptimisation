@@ -43,6 +43,7 @@
             <Button
                 android:id="@+id/sxs_first_row_first_image"
                 android:layout_width="60dp"
+                android:textSize="15sp"
                 android:layout_height="60dp"
                 android:layout_marginRight="5dp"
                 android:background="#FF0000"></Button>
@@ -50,6 +51,7 @@
             <Button
                 android:id="@+id/sxs_first_row_second_image"
                 android:layout_width="60dp"
+                android:textSize="15sp"
                 android:layout_height="60dp"
                 android:layout_marginRight="5dp"
                 android:background="#1B5E20"></Button>
@@ -57,6 +59,7 @@
             <Button
                 android:id="@+id/sxs_first_row_third_image"
                 android:layout_width="60dp"
+                android:textSize="15sp"
                 android:layout_height="60dp"
                 android:layout_marginRight="5dp"
                 android:background="#FF4A02"></Button>
@@ -64,6 +67,7 @@
             <Button
                 android:id="@+id/sxs_first_row_fourth_image"
                 android:layout_width="60dp"
+                android:textSize="15sp"
                 android:layout_height="60dp"
                 android:layout_marginRight="5dp"
                 android:background="#0D47A1"></Button>
@@ -72,12 +76,14 @@
                 android:id="@+id/sxs_first_row_fifth_image"
                 android:layout_width="60dp"
                 android:layout_height="60dp"
+                android:textSize="15sp"
                 android:layout_marginRight="5dp"
                 android:background="#FFF900"></Button>
 
             <Button
                 android:id="@+id/sxs_first_row_sixth_image"
                 android:layout_width="60dp"
+                android:textSize="15sp"
                 android:layout_height="60dp"
                 android:background="#4A148C"></Button>
         </LinearLayout>
@@ -92,6 +98,7 @@
             <Button
                 android:id="@+id/sxs_second_row_first_image"
                 android:layout_width="60dp"
+                android:textSize="15sp"
                 android:layout_height="match_parent"
                 android:layout_marginRight="5dp"
                 android:background="#FF3D00"></Button>
@@ -99,6 +106,7 @@
             <Button
                 android:id="@+id/sxs_second_row_second_image"
                 android:layout_width="60dp"
+                android:textSize="15sp"
                 android:layout_height="match_parent"
                 android:layout_marginRight="5dp"
                 android:background="#B2FF59"></Button>
@@ -106,6 +114,7 @@
             <Button
                 android:id="@+id/sxs_second_row_third_image"
                 android:layout_width="60dp"
+                android:textSize="15sp"
                 android:layout_height="match_parent"
                 android:layout_marginRight="5dp"
                 android:background="#18FFFF"></Button>
@@ -113,6 +122,7 @@
             <Button
                 android:id="@+id/sxs_second_row_fourth_image"
                 android:layout_width="60dp"
+                android:textSize="15sp"
                 android:layout_height="match_parent"
                 android:layout_marginRight="5dp"
                 android:background="#7B62C3"></Button>
@@ -120,6 +130,7 @@
             <Button
                 android:id="@+id/sxs_second_row_fifth_image"
                 android:layout_width="60dp"
+                android:textSize="15sp"
                 android:layout_height="match_parent"
                 android:layout_marginRight="5dp"
                 android:background="#E040FB"></Button>
@@ -127,6 +138,7 @@
             <Button
                 android:id="@+id/sxs_second_row_sixth_image"
                 android:layout_width="60dp"
+                android:textSize="15sp"
                 android:layout_height="match_parent"
                 android:background="#004D40"></Button>
         </LinearLayout>
@@ -141,6 +153,7 @@
             <Button
                 android:id="@+id/sxs_third_row_first_image"
                 android:layout_width="60dp"
+                android:textSize="15sp"
                 android:layout_height="match_parent"
                 android:layout_marginRight="5dp"
                 android:background="#74FD00"></Button>
@@ -148,6 +161,7 @@
             <Button
                 android:id="@+id/sxs_third_row_second_image"
                 android:layout_width="60dp"
+                android:textSize="15sp"
                 android:layout_height="match_parent"
                 android:layout_marginRight="5dp"
                 android:background="#FF1744"></Button>
@@ -155,6 +169,7 @@
             <Button
                 android:id="@+id/sxs_third_row_third_image"
                 android:layout_width="60dp"
+                android:textSize="15sp"
                 android:layout_height="match_parent"
                 android:layout_marginRight="5dp"
                 android:background="#FFD740"></Button>
@@ -162,6 +177,7 @@
             <Button
                 android:id="@+id/sxs_third_row_fourth_image"
                 android:layout_width="60dp"
+                android:textSize="15sp"
                 android:layout_height="match_parent"
                 android:layout_marginRight="5dp"
                 android:background="#FF4081"></Button>
@@ -169,6 +185,7 @@
             <Button
                 android:id="@+id/sxs_third_row_fifth_image"
                 android:layout_width="60dp"
+                android:textSize="15sp"
                 android:layout_height="match_parent"
                 android:layout_marginRight="5dp"
                 android:background="#CCFF90"></Button>
@@ -176,6 +193,7 @@
             <Button
                 android:id="@+id/sxs_third_row_sixth_image"
                 android:layout_width="60dp"
+                android:textSize="15sp"
                 android:layout_height="match_parent"
                 android:background="#207DE1"></Button>
         </LinearLayout>
@@ -190,6 +208,7 @@
             <Button
                 android:id="@+id/sxs_fourth_row_first_image"
                 android:layout_width="60dp"
+                android:textSize="15sp"
                 android:layout_height="match_parent"
                 android:layout_marginRight="5dp"
                 android:background="#FF9100"></Button>
@@ -197,6 +216,7 @@
             <Button
                 android:id="@+id/sxs_fourth_row_second_image"
                 android:layout_width="60dp"
+                android:textSize="15sp"
                 android:layout_height="match_parent"
                 android:layout_marginRight="5dp"
                 android:background="#C80118"></Button>
@@ -204,6 +224,7 @@
             <Button
                 android:id="@+id/sxs_fourth_row_third_image"
                 android:layout_width="60dp"
+                android:textSize="15sp"
                 android:layout_height="match_parent"
                 android:layout_marginRight="5dp"
                 android:background="#6FAC1A"></Button>
@@ -211,6 +232,7 @@
             <Button
                 android:id="@+id/sxs_fourth_row_fourth_image"
                 android:layout_width="60dp"
+                android:textSize="15sp"
                 android:layout_height="match_parent"
                 android:layout_marginRight="5dp"
                 android:background="#00695C"></Button>
@@ -218,6 +240,7 @@
             <Button
                 android:id="@+id/sxs_fourth_row_fifth_image"
                 android:layout_width="60dp"
+                android:textSize="15sp"
                 android:layout_height="match_parent"
                 android:layout_marginRight="5dp"
                 android:background="#1B5E20"></Button>
@@ -225,6 +248,7 @@
             <Button
                 android:id="@+id/sxs_fourth_row_sixth_image"
                 android:layout_width="60dp"
+                android:textSize="15sp"
                 android:layout_height="match_parent"
                 android:background="#C62828"></Button>
         </LinearLayout>
@@ -239,6 +263,7 @@
             <Button
                 android:id="@+id/sxs_fifth_row_first_image"
                 android:layout_width="60dp"
+                android:textSize="15sp"
                 android:layout_height="match_parent"
                 android:layout_marginRight="5dp"
                 android:background="#004695"></Button>
@@ -246,6 +271,7 @@
             <Button
                 android:id="@+id/sxs_fifth_row_second_image"
                 android:layout_width="60dp"
+                android:textSize="15sp"
                 android:layout_height="match_parent"
                 android:layout_marginRight="5dp"
                 android:background="#4C3B1A"></Button>
@@ -253,6 +279,7 @@
             <Button
                 android:id="@+id/sxs_fifth_row_third_image"
                 android:layout_width="60dp"
+                android:textSize="15sp"
                 android:layout_height="match_parent"
                 android:layout_marginRight="5dp"
                 android:background="#450000"></Button>
@@ -260,6 +287,7 @@
             <Button
                 android:id="@+id/sxs_fifth_row_fourth_image"
                 android:layout_width="60dp"
+                android:textSize="15sp"
                 android:layout_height="match_parent"
                 android:layout_marginRight="5dp"
                 android:background="#373003"></Button>
@@ -269,11 +297,13 @@
                 android:layout_width="60dp"
                 android:layout_height="match_parent"
                 android:layout_marginRight="5dp"
+                android:textSize="15sp"
                 android:background="#5142AE"></Button>
 
             <Button
                 android:id="@+id/sxs_fifth_row_sixth_image"
                 android:layout_width="60dp"
+                android:textSize="15sp"
                 android:layout_height="match_parent"
                 android:background="#571616"></Button>
         </LinearLayout>
@@ -288,6 +318,7 @@
             <Button
                 android:id="@+id/sxs_sixth_row_first_image"
                 android:layout_width="60dp"
+                android:textSize="15sp"
                 android:layout_height="match_parent"
                 android:layout_marginRight="5dp"
                 android:background="#AD1457"></Button>
@@ -295,6 +326,7 @@
             <Button
                 android:id="@+id/sxs_sixth_row_second_image"
                 android:layout_width="60dp"
+                android:textSize="15sp"
                 android:layout_height="match_parent"
                 android:layout_marginRight="5dp"
                 android:background="#00897B"></Button>
@@ -302,6 +334,7 @@
             <Button
                 android:id="@+id/sxs_sixth_row_third_image"
                 android:layout_width="60dp"
+                android:textSize="15sp"
                 android:layout_height="match_parent"
                 android:layout_marginRight="5dp"
                 android:background="#EA80FC"></Button>
@@ -309,6 +342,7 @@
             <Button
                 android:id="@+id/sxs_sixth_row_fourth_image"
                 android:layout_width="60dp"
+                android:textSize="15sp"
                 android:layout_height="match_parent"
                 android:layout_marginRight="5dp"
                 android:background="#00838F"></Button>
@@ -316,6 +350,7 @@
             <Button
                 android:id="@+id/sxs_sixth_row_fifth_image"
                 android:layout_width="60dp"
+                android:textSize="15sp"
                 android:layout_height="match_parent"
                 android:layout_marginRight="5dp"
                 android:background="#1A237E"></Button>
@@ -323,6 +358,7 @@
             <Button
                 android:id="@+id/sxs_sixth_row_sixth_image"
                 android:layout_width="60dp"
+                android:textSize="15sp"
                 android:layout_height="match_parent"
                 android:layout_marginRight="5dp"
                 android:background="#009A07"></Button>
