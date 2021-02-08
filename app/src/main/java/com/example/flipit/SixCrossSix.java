@@ -18,6 +18,8 @@ import android.widget.Toast;
 import com.example.clock.Chronometer2;
 import com.example.clock.Chronometer3;
 
+import java.util.Random;
+
 public class SixCrossSix extends AppCompatActivity {
 
     private long BackPressedTime;
@@ -37,6 +39,8 @@ public class SixCrossSix extends AppCompatActivity {
     private Chronometer3 mChronometer;
     private Thread mThreadChrono;
     private Context mContext;
+
+    final int a[]={1,1,1,1,1,1,2,2,2,2,2,2,3,3,3,3,3,3,4,4,4,4,4,4,5,5,5,5,5,5,6,6,6,6,6,6};
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -91,13 +95,24 @@ public class SixCrossSix extends AppCompatActivity {
         r6iv5=(Button) findViewById(R.id.sxs_sixth_row_fifth_image);    r6iv5.setText("FRONT");
         r6iv6=(Button) findViewById(R.id.sxs_sixth_row_sixth_image);    r6iv6.setText("FRONT");
 
+        Random rand=new Random();
+        int i,j,temp,n=36;
+
+        for(i=n-1;i>0;i--)      //Fisher Yates Algorithm
+        {
+            j=rand.nextInt(i);
+            temp=a[j];
+            a[j]=a[i];
+            a[i]=temp;
+        }
+
 
 
         r1iv1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 co++;
-                startAnimation(r1iv1);
+                startAnimation(r1iv1,a[0]);
                 text_below.setText("Number of times button pressed: "+co+"\n");
             }
         });
@@ -106,7 +121,7 @@ public class SixCrossSix extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 co++;
-                startAnimation(r1iv2);
+                startAnimation(r1iv2,a[1]);
                 text_below.setText("Number of times button pressed: "+co+"\n");
             }
         });
@@ -115,7 +130,7 @@ public class SixCrossSix extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 co++;
-                startAnimation(r1iv3);
+                startAnimation(r1iv3,a[2]);
                 text_below.setText("Number of times button pressed: "+co+"\n");
             }
         });
@@ -124,7 +139,7 @@ public class SixCrossSix extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 co++;
-                startAnimation(r1iv4);
+                startAnimation(r1iv4,a[3]);
                 text_below.setText("Number of times button pressed: "+co+"\n");
             }
         });
@@ -133,7 +148,7 @@ public class SixCrossSix extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 co++;
-                startAnimation(r1iv5);
+                startAnimation(r1iv5,a[4]);
                 text_below.setText("Number of times button pressed: "+co+"\n");
             }
         });
@@ -142,7 +157,7 @@ public class SixCrossSix extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 co++;
-                startAnimation(r1iv6);
+                startAnimation(r1iv6,a[5]);
                 text_below.setText("Number of times button pressed: "+co+"\n");
             }
         });
@@ -152,7 +167,7 @@ public class SixCrossSix extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 co++;
-                startAnimation(r2iv1);
+                startAnimation(r2iv1,a[6]);
                 text_below.setText("Number of times button pressed: "+co+"\n");
             }
         });
@@ -161,7 +176,7 @@ public class SixCrossSix extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 co++;
-                startAnimation(r2iv2);
+                startAnimation(r2iv2,a[7]);
                 text_below.setText("Number of times button pressed: "+co+"\n");
             }
         });
@@ -170,7 +185,7 @@ public class SixCrossSix extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 co++;
-                startAnimation(r2iv3);
+                startAnimation(r2iv3,a[8]);
                 text_below.setText("Number of times button pressed: "+co+"\n");
             }
         });
@@ -179,7 +194,7 @@ public class SixCrossSix extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 co++;
-                startAnimation(r2iv4);
+                startAnimation(r2iv4,a[9]);
                 text_below.setText("Number of times button pressed: "+co+"\n");
             }
         });
@@ -188,7 +203,7 @@ public class SixCrossSix extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 co++;
-                startAnimation(r2iv5);
+                startAnimation(r2iv5,a[10]);
                 text_below.setText("Number of times button pressed: "+co+"\n");
             }
         });
@@ -197,7 +212,7 @@ public class SixCrossSix extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 co++;
-                startAnimation(r2iv6);
+                startAnimation(r2iv6,a[11]);
                 text_below.setText("Number of times button pressed: "+co+"\n");
             }
         });
@@ -207,7 +222,7 @@ public class SixCrossSix extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 co++;
-                startAnimation(r3iv1);
+                startAnimation(r3iv1,a[12]);
                 text_below.setText("Number of times button pressed: "+co+"\n");
             }
         });
@@ -216,7 +231,7 @@ public class SixCrossSix extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 co++;
-                startAnimation(r3iv2);
+                startAnimation(r3iv2,a[13]);
                 text_below.setText("Number of times button pressed: "+co+"\n");
             }
         });
@@ -225,7 +240,7 @@ public class SixCrossSix extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 co++;
-                startAnimation(r3iv3);
+                startAnimation(r3iv3,a[14]);
                 text_below.setText("Number of times button pressed: "+co+"\n");
             }
         });
@@ -234,7 +249,7 @@ public class SixCrossSix extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 co++;
-                startAnimation(r3iv4);
+                startAnimation(r3iv4,a[15]);
                 text_below.setText("Number of times button pressed: "+co+"\n");
             }
         });
@@ -243,7 +258,7 @@ public class SixCrossSix extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 co++;
-                startAnimation(r3iv5);
+                startAnimation(r3iv5,a[16]);
                 text_below.setText("Number of times button pressed: "+co+"\n");
             }
         });
@@ -253,7 +268,7 @@ public class SixCrossSix extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 co++;
-                startAnimation(r3iv6);
+                startAnimation(r3iv6,a[17]);
                 text_below.setText("Number of times button pressed: "+co+"\n");
             }
         });
@@ -263,7 +278,7 @@ public class SixCrossSix extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 co++;
-                startAnimation(r4iv1);
+                startAnimation(r4iv1,a[18]);
                 text_below.setText("Number of times button pressed: "+co+"\n");
             }
         });
@@ -272,7 +287,7 @@ public class SixCrossSix extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 co++;
-                startAnimation(r4iv2);
+                startAnimation(r4iv2,a[19]);
                 text_below.setText("Number of times button pressed: "+co+"\n");
             }
         });
@@ -281,7 +296,7 @@ public class SixCrossSix extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 co++;
-                startAnimation(r4iv3);
+                startAnimation(r4iv3,a[20]);
                 text_below.setText("Number of times button pressed: "+co+"\n");
             }
         });
@@ -290,7 +305,7 @@ public class SixCrossSix extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 co++;
-                startAnimation(r4iv4);
+                startAnimation(r4iv4,a[21]);
                 text_below.setText("Number of times button pressed: "+co+"\n");
             }
         });
@@ -299,7 +314,7 @@ public class SixCrossSix extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 co++;
-                startAnimation(r4iv5);
+                startAnimation(r4iv5,a[22]);
                 text_below.setText("Number of times button pressed: "+co+"\n");
             }
         });
@@ -308,7 +323,7 @@ public class SixCrossSix extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 co++;
-                startAnimation(r4iv6);
+                startAnimation(r4iv6,a[23]);
                 text_below.setText("Number of times button pressed: "+co+"\n");
             }
         });
@@ -319,7 +334,7 @@ public class SixCrossSix extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 co++;
-                startAnimation(r5iv1);
+                startAnimation(r5iv1,a[24]);
                 text_below.setText("Number of times button pressed: "+co+"\n");
             }
         });
@@ -328,7 +343,7 @@ public class SixCrossSix extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 co++;
-                startAnimation(r5iv2);
+                startAnimation(r5iv2,a[25]);
                 text_below.setText("Number of times button pressed: "+co+"\n");
             }
         });
@@ -337,7 +352,7 @@ public class SixCrossSix extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 co++;
-                startAnimation(r5iv3);
+                startAnimation(r5iv3,a[26]);
                 text_below.setText("Number of times button pressed: "+co+"\n");
             }
         });
@@ -346,7 +361,7 @@ public class SixCrossSix extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 co++;
-                startAnimation(r5iv4);
+                startAnimation(r5iv4,a[27]);
                 text_below.setText("Number of times button pressed: "+co+"\n");
             }
         });
@@ -355,7 +370,7 @@ public class SixCrossSix extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 co++;
-                startAnimation(r5iv5);
+                startAnimation(r5iv5,a[28]);
                 text_below.setText("Number of times button pressed: "+co+"\n");
             }
         });
@@ -364,7 +379,7 @@ public class SixCrossSix extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 co++;
-                startAnimation(r5iv6);
+                startAnimation(r5iv6,a[29]);
                 text_below.setText("Number of times button pressed: "+co+"\n");
             }
         });
@@ -376,7 +391,7 @@ public class SixCrossSix extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 co++;
-                startAnimation(r6iv1);
+                startAnimation(r6iv1,a[30]);
                 text_below.setText("Number of times button pressed: "+co+"\n");
             }
         });
@@ -385,7 +400,7 @@ public class SixCrossSix extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 co++;
-                startAnimation(r6iv2);
+                startAnimation(r6iv2,a[31]);
                 text_below.setText("Number of times button pressed: "+co+"\n");
             }
         });
@@ -394,7 +409,7 @@ public class SixCrossSix extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 co++;
-                startAnimation(r6iv3);
+                startAnimation(r6iv3,a[32]);
                 text_below.setText("Number of times button pressed: "+co+"\n");
             }
         });
@@ -403,7 +418,7 @@ public class SixCrossSix extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 co++;
-                startAnimation(r6iv4);
+                startAnimation(r6iv4,a[33]);
                 text_below.setText("Number of times button pressed: "+co+"\n");
             }
         });
@@ -412,7 +427,7 @@ public class SixCrossSix extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 co++;
-                startAnimation(r6iv5);
+                startAnimation(r6iv5,a[34]);
                 text_below.setText("Number of times button pressed: "+co+"\n");
             }
         });
@@ -421,7 +436,7 @@ public class SixCrossSix extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 co++;
-                startAnimation(r6iv6);
+                startAnimation(r6iv6,a[35]);
                 text_below.setText("Number of times button pressed: "+co+"\n");
             }
         });
@@ -445,7 +460,7 @@ public class SixCrossSix extends AppCompatActivity {
 
     }
 
-    void startAnimation(final Button XYZ) {
+    void startAnimation(final Button XYZ,final int num) {
         ObjectAnimator anime1=ObjectAnimator.ofFloat(XYZ,"scaleX",1f,0f);
         final ObjectAnimator anime2=ObjectAnimator.ofFloat(XYZ,"scaleX",0f,1f);
 
@@ -461,10 +476,10 @@ public class SixCrossSix extends AppCompatActivity {
             public void onAnimationEnd(Animator animation) {
                 super.onAnimationEnd(animation);
 
-                if(XYZ.getText().toString()=="BACK")
+                if(XYZ.getText().toString()==Integer.toString(num))
                     XYZ.setText("FRONT");
                 else if(XYZ.getText().toString()=="FRONT")
-                    XYZ.setText("BACK");
+                    XYZ.setText(Integer.toString(num));
                 anime2.start();
             }
         });

@@ -20,6 +20,8 @@ import android.widget.Toast;
 import com.example.clock.Chronometer;
 import com.example.clock.Chronometer2;
 
+import java.util.Random;
+
 public class TwoCrossTwo extends AppCompatActivity {
 
     private long BackPressedTime;
@@ -32,7 +34,9 @@ public class TwoCrossTwo extends AppCompatActivity {
     private Thread mThreadChrono;
     private Context mContext;
 
+    final int a[]={1,1,2,2};
     @Override
+
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
@@ -50,11 +54,23 @@ public class TwoCrossTwo extends AppCompatActivity {
         row2iv2=(Button) findViewById(R.id.second_row_second);  row2iv2.setText("FRONT");
 
 
+        int i,j,n=4,temp;
+        Random rand=new Random();
+
+        for(i=n-1;i>0;i--)      //Fisher Yates Algorithm
+        {
+            j=rand.nextInt(i);
+            temp=a[j];
+            a[j]=a[i];
+            a[i]=temp;
+        }
+
+
         row1iv1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 co++;
-                startAnimation(row1iv1);
+                startAnimation(row1iv1,a[0]);
                 text_below.setText("Number of times button pressed:"+co+"\n");
             }
         });
@@ -63,7 +79,7 @@ public class TwoCrossTwo extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 co++;
-                startAnimation(row1iv2);
+                startAnimation(row1iv2,a[1]);
                 text_below.setText("Number of times button pressed:"+co+"\n");
             }
         });
@@ -71,7 +87,7 @@ public class TwoCrossTwo extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 co++;
-                startAnimation(row2iv1);
+                startAnimation(row2iv1,a[2]);
                 text_below.setText("Number of times button pressed:"+co+"\n");
             }
         });
@@ -79,7 +95,7 @@ public class TwoCrossTwo extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 co++;
-                startAnimation(row2iv2);
+                startAnimation(row2iv2,a[3]);
                 text_below.setText("Number of times button pressed:"+co+"\n");
             }
         });
@@ -101,7 +117,7 @@ public class TwoCrossTwo extends AppCompatActivity {
     }
 
 
-    void startAnimation(final Button XYZ) {
+    void startAnimation(final Button XYZ, final int num) {
         ObjectAnimator anime1=ObjectAnimator.ofFloat(XYZ,"scaleX",1f,0f);
         final ObjectAnimator anime2=ObjectAnimator.ofFloat(XYZ,"scaleX",0f,1f);
 
@@ -117,10 +133,10 @@ public class TwoCrossTwo extends AppCompatActivity {
             public void onAnimationEnd(Animator animation) {
                 super.onAnimationEnd(animation);
 
-                if(XYZ.getText().toString()=="BACK")
+                if(XYZ.getText().toString() == Integer.toString(num))
                     XYZ.setText("FRONT");
                 else if(XYZ.getText().toString()=="FRONT")
-                    XYZ.setText("BACK");
+                    XYZ.setText(Integer.toString(num));
                 anime2.start();
             }
         });

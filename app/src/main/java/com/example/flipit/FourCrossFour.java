@@ -16,8 +16,9 @@ import android.widget.Button;
 //import android.widget.Chronometer;
 import android.widget.TextView;
 import android.widget.Toast;
-
 import com.example.clock.Chronometer;
+
+import java.util.Random;
 
 public class FourCrossFour extends AppCompatActivity {
 
@@ -34,6 +35,8 @@ public class FourCrossFour extends AppCompatActivity {
     private Chronometer mChronometer;
     private Thread mThreadChrono;
     private Context mContext;
+
+    final int a[]={1,1,1,1,2,2,2,2,3,3,3,3,4,4,4,4};
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -71,12 +74,23 @@ public class FourCrossFour extends AppCompatActivity {
         row4iv4=(Button) findViewById(R.id.fourth_row_fourth_image);    row4iv4.setText("FRONT");
 
 
+        int i,j,n=16,temp;
+        Random rand=new Random();
+
+        for(i=n-1;i>0;i--)      //Fisher Yates Algorithm
+        {
+            j=rand.nextInt(i);
+            temp=a[j];
+            a[j]=a[i];
+            a[i]=temp;
+        }
+
         row1iv1.setOnClickListener(new View.OnClickListener() {
             @SuppressLint("SetTextI18n")
             @Override
             public void onClick(View v) {
                 co++;
-                startAnimation(row1iv1);
+                startAnimation(row1iv1,a[0]);
                 text_below.setText("Number of times button pressed:"+co+"\n");
             }
         });
@@ -86,7 +100,7 @@ public class FourCrossFour extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 co++;
-                startAnimation(row1iv2);
+                startAnimation(row1iv2,a[1]);
                 text_below.setText("Number of times button pressed:"+co+"\n");
             }
         });
@@ -96,7 +110,7 @@ public class FourCrossFour extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 co++;
-                startAnimation(row1iv3);
+                startAnimation(row1iv3,a[2]);
                 text_below.setText("Number of times button pressed:"+co+"\n");
             }
         });
@@ -106,7 +120,7 @@ public class FourCrossFour extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 co++;
-                startAnimation(row1iv4);
+                startAnimation(row1iv4,a[3]);
                 text_below.setText("Number of times button pressed:"+co+"\n");
             }
         });
@@ -116,7 +130,7 @@ public class FourCrossFour extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 co++;
-                startAnimation(row2iv1);
+                startAnimation(row2iv1,a[4]);
                 text_below.setText("Number of times button pressed:"+co+"\n");
             }
         });
@@ -126,7 +140,7 @@ public class FourCrossFour extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 co++;
-                startAnimation(row2iv2);
+                startAnimation(row2iv2,a[5]);
                 text_below.setText("Number of times button pressed:"+co+"\n");
             }
         });
@@ -136,7 +150,7 @@ public class FourCrossFour extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 co++;
-                startAnimation(row2iv3);
+                startAnimation(row2iv3,a[6]);
                 text_below.setText("Number of times button pressed:"+co+"\n");
             }
         });
@@ -146,7 +160,7 @@ public class FourCrossFour extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 co++;
-                startAnimation(row2iv4);
+                startAnimation(row2iv4,a[7]);
                 text_below.setText("Number of times button pressed:"+co+"\n");
             }
         });
@@ -156,7 +170,7 @@ public class FourCrossFour extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 co++;
-                startAnimation(row3iv1);
+                startAnimation(row3iv1,a[8]);
                 text_below.setText("Number of times button pressed:"+co+"\n");
             }
         });
@@ -166,7 +180,7 @@ public class FourCrossFour extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 co++;
-                startAnimation(row3iv2);
+                startAnimation(row3iv2,a[9]);
                 text_below.setText("Number of times button pressed:"+co+"\n");
             }
         });
@@ -176,7 +190,7 @@ public class FourCrossFour extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 co++;
-                startAnimation(row3iv3);
+                startAnimation(row3iv3,a[10]);
                 text_below.setText("Number of times button pressed:"+co+"\n");
             }
         });
@@ -186,7 +200,7 @@ public class FourCrossFour extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 co++;
-                startAnimation(row3iv4);
+                startAnimation(row3iv4,a[11]);
                 text_below.setText("Number of times button pressed:"+co+"\n");
             }
         });
@@ -196,7 +210,7 @@ public class FourCrossFour extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 co++;
-                startAnimation(row4iv1);
+                startAnimation(row4iv1,a[12]);
                 text_below.setText("Number of times button pressed:"+co+"\n");
             }
         });
@@ -206,7 +220,7 @@ public class FourCrossFour extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 co++;
-                startAnimation(row4iv2);
+                startAnimation(row4iv2,a[13]);
                 text_below.setText("Number of times button pressed:"+co+"\n");
             }
         });
@@ -216,7 +230,7 @@ public class FourCrossFour extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 co++;
-                startAnimation(row4iv3);
+                startAnimation(row4iv3,a[14]);
                 text_below.setText("Number of times button pressed:"+co+"\n");
             }
         });
@@ -226,7 +240,7 @@ public class FourCrossFour extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 co++;
-                startAnimation(row4iv4);
+                startAnimation(row4iv4,a[15]);
                 text_below.setText("Number of times button pressed:"+co+"\n");
             }
         });
@@ -247,7 +261,7 @@ public class FourCrossFour extends AppCompatActivity {
         });
     }
 
-    void startAnimation(final Button XYZ) {
+    void startAnimation(final Button XYZ,final int num) {
         ObjectAnimator anime1=ObjectAnimator.ofFloat(XYZ,"scaleX",1f,0f);
         final ObjectAnimator anime2=ObjectAnimator.ofFloat(XYZ,"scaleX",0f,1f);
 
@@ -263,10 +277,10 @@ public class FourCrossFour extends AppCompatActivity {
             public void onAnimationEnd(Animator animation) {
                 super.onAnimationEnd(animation);
 
-                if(XYZ.getText().toString()=="BACK")
+                if(XYZ.getText().toString()==Integer.toString(num))
                     XYZ.setText("FRONT");
                 else if(XYZ.getText().toString()=="FRONT")
-                    XYZ.setText("BACK");
+                    XYZ.setText(Integer.toString(num));
                 anime2.start();
             }
         });
