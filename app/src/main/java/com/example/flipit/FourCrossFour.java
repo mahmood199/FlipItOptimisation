@@ -41,8 +41,11 @@ public class FourCrossFour extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        getWindow().addFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN);
         setContentView(R.layout.activity_four_cross_four);
+
+        getSupportActionBar().hide();
+        getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,
+                             WindowManager.LayoutParams.FLAG_FULLSCREEN);
 
         text_below=(TextView) findViewById(R.id.four_cross_four_bottom_text);
         start_timer=(Button) findViewById(R.id.start_timer);
@@ -72,6 +75,7 @@ public class FourCrossFour extends AppCompatActivity {
         row4iv2=(Button) findViewById(R.id.fourth_row_second_image);    row4iv2.setText("FRONT");
         row4iv3=(Button) findViewById(R.id.fourth_row_third_image);     row4iv3.setText("FRONT");
         row4iv4=(Button) findViewById(R.id.fourth_row_fourth_image);    row4iv4.setText("FRONT");
+
 
 
         int i,j,n=16,temp;
