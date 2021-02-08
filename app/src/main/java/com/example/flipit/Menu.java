@@ -67,7 +67,7 @@ public class Menu extends AppCompatActivity {
                             Intent i=new Intent(Menu.this,SixCrossSix.class);
                             startActivity(i);
                         }
-                        Toast.makeText(Menu.this, level +"   "+which, Toast.LENGTH_SHORT).show();
+                        
                     }
                 });
                 options.show();
