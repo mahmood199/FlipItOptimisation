@@ -32,9 +32,9 @@ public class Chronometer3 implements Runnable{
         while(mIsRunning)
         {
             long since=System.currentTimeMillis()-mStartTime;
-            if(since>65000)
+            if(since>37000)
                 break;
-            since=(65000-since);
+            since=(37000-since);
             long seconds=(int) since/x;
             long milliseconds=(int) (since)%x;
 
