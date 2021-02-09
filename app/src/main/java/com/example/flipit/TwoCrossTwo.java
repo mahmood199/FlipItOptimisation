@@ -4,11 +4,13 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.animation.Animator;
 import android.animation.AnimatorListenerAdapter;
+import android.animation.AnimatorSet;
 import android.animation.ObjectAnimator;
 import android.animation.AnimatorListenerAdapter;
 import android.animation.ObjectAnimator;
 import android.content.Context;
 import android.os.Bundle;
+import android.os.Handler;
 import android.view.View;
 import android.view.WindowManager;
 import android.view.animation.AccelerateInterpolator;
@@ -32,9 +34,14 @@ public class TwoCrossTwo extends AppCompatActivity {
     private Thread mThreadChrono;
     private Context mContext;
 
-    final int a[]={1,1,2,2};
-    @Override
+    private Button previousFlipped=null,currentFlipped=null;
+    private int newCardsFlipped=0,previousInt=0,currentInt=0;
+    private boolean isAnimationRunning;
 
+
+    final int a[]={1,1,2,2};
+
+    @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
@@ -65,12 +72,14 @@ public class TwoCrossTwo extends AppCompatActivity {
             a[i]=temp;
         }
 
+        isAnimationRunning=false;
 
         row1iv1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 co++;
-                startAnimation(row1iv1,a[0]);
+                if((!isAnimationRunning) && (newCardsFlipped==0 || previousFlipped!=row1iv1))
+                    flip(row1iv1,a[0]);
                 text_below.setText("Number of times button pressed:"+co+"\n");
             }
         });
@@ -79,7 +88,8 @@ public class TwoCrossTwo extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 co++;
-                startAnimation(row1iv2,a[1]);
+                if((!isAnimationRunning) && (newCardsFlipped==0 || previousFlipped!=row1iv2))
+                    flip(row1iv2,a[1]);
                 text_below.setText("Number of times button pressed:"+co+"\n");
             }
         });
@@ -87,7 +97,8 @@ public class TwoCrossTwo extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 co++;
-                startAnimation(row2iv1,a[2]);
+                if((!isAnimationRunning) && (newCardsFlipped==0 || previousFlipped!=row2iv1))
+                    flip(row2iv1,a[2]);
                 text_below.setText("Number of times button pressed:"+co+"\n");
             }
         });
@@ -95,7 +106,8 @@ public class TwoCrossTwo extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 co++;
-                startAnimation(row2iv2,a[3]);
+                if((!isAnimationRunning) && (newCardsFlipped==0 || previousFlipped!=row2iv2))
+                    flip(row2iv2,a[3]);
                 text_below.setText("Number of times button pressed:"+co+"\n");
             }
         });
@@ -129,29 +141,134 @@ public class TwoCrossTwo extends AppCompatActivity {
     }
 
 
-    void startAnimation(final Button XYZ, final int num) {
-        ObjectAnimator anime1=ObjectAnimator.ofFloat(XYZ,"scaleX",1f,0f);
-        final ObjectAnimator anime2=ObjectAnimator.ofFloat(XYZ,"scaleX",0f,1f);
 
-        anime1.setInterpolator(new DecelerateInterpolator());
-        anime1.setDuration(100);
+    //Function to increase co value
+    void flip(Button Btn,int num)
+    {
+        if(newCardsFlipped==0)
+        {
+            previousFlipped=Btn;
+            previousInt=num;
 
-        anime2.setInterpolator(new AccelerateInterpolator());
-        anime2.setDuration(100);
+            final ObjectAnimator anime1=ObjectAnimator.ofFloat(previousFlipped,"scaleX",1f,0f);
+            final ObjectAnimator anime2=ObjectAnimator.ofFloat(previousFlipped,"scaleX",0f,1f);
 
-        anime1.start();
-        anime1.addListener(new AnimatorListenerAdapter() {
-            @Override
-            public void onAnimationEnd(Animator animation) {
-                super.onAnimationEnd(animation);
+            anime1.setInterpolator(new DecelerateInterpolator());
+            anime1.setDuration(100);
 
-                if(XYZ.getText().toString() == Integer.toString(num))
-                    XYZ.setText("FRONT");
-                else if(XYZ.getText().toString()=="FRONT")
-                    XYZ.setText(Integer.toString(num));
-                anime2.start();
-            }
-        });
+            anime2.setInterpolator(new AccelerateInterpolator());
+            anime2.setDuration(100);
+
+            isAnimationRunning=true;
+            anime1.start();
+
+            anime1.addListener(new AnimatorListenerAdapter() {
+                @Override
+                public void onAnimationEnd(Animator animation) {
+                    super.onAnimationEnd(animation);
+
+                    if(previousFlipped.getText().toString()=="FRONT")
+                        previousFlipped.setText(Integer.toString(previousInt));
+                    anime2.start();
+                }
+            });
+            newCardsFlipped++;
+            //Toast.makeText(getApplicationContext(),Integer.toString(previousInt),Toast.LENGTH_SHORT).show();
+            isAnimationRunning=false;
+        }
+
+        else if(newCardsFlipped==1)
+        {
+            currentFlipped=Btn;
+            currentInt=num;
+
+            final ObjectAnimator anime1=ObjectAnimator.ofFloat(currentFlipped,"scaleX",1f,0f);
+            final ObjectAnimator anime2=ObjectAnimator.ofFloat(currentFlipped,"scaleX",0f,1f);
+
+            anime1.setInterpolator(new DecelerateInterpolator());
+            anime1.setDuration(100);
+
+            anime2.setInterpolator(new AccelerateInterpolator());
+            anime2.setDuration(100);
+
+            isAnimationRunning=true;
+            anime1.start();
+
+            anime1.addListener(new AnimatorListenerAdapter() {
+                @Override
+                public void onAnimationEnd(Animator animation) {
+                    super.onAnimationEnd(animation);
+
+                    if(currentFlipped.getText().toString()=="FRONT")
+                        currentFlipped.setText(Integer.toString(currentInt));
+                    anime2.start();
+                }
+            });
+            //Toast.makeText(getApplicationContext(), Integer.toString(currentInt), Toast.LENGTH_SHORT).show();
+
+            newCardsFlipped++;
+
+
+            Handler handler=new Handler();
+
+            handler.postDelayed(new Runnable() {
+                @Override
+                public void run() {
+                    if(currentInt!=previousInt)
+                    {
+                        //Toast.makeText(getApplicationContext(),"Not equal",Toast.LENGTH_SHORT).show();
+                        final ObjectAnimator anime11=ObjectAnimator.ofFloat(currentFlipped,"scaleX",1f,0f);
+                        final ObjectAnimator anime22=ObjectAnimator.ofFloat(currentFlipped,"scaleX",0f,1f);
+
+                        anime11.setInterpolator(new DecelerateInterpolator());
+                        anime11.setDuration(100);
+
+                        anime22.setInterpolator(new AccelerateInterpolator());
+                        anime22.setDuration(100);
+
+                        anime11.start();
+
+                        anime11.addListener(new AnimatorListenerAdapter() {
+                            @Override
+                            public void onAnimationEnd(Animator animation) {
+                                super.onAnimationEnd(animation);
+
+                                currentFlipped.setText("FRONT");
+                                anime22.start();
+                            }
+                        });
+
+                        final ObjectAnimator anime33=ObjectAnimator.ofFloat(previousFlipped,"scaleX",1f,0f);
+                        final ObjectAnimator anime44=ObjectAnimator.ofFloat(previousFlipped,"scaleX",0f,1f);
+
+                        anime33.setInterpolator(new DecelerateInterpolator());
+                        anime33.setDuration(100);
+
+                        anime44.setInterpolator(new AccelerateInterpolator());
+                        anime44.setDuration(100);
+
+                        anime33.start();
+
+                        anime33.addListener(new AnimatorListenerAdapter() {
+                            @Override
+                            public void onAnimationEnd(Animator animation) {
+                                super.onAnimationEnd(animation);
+
+                                previousFlipped.setText("FRONT");
+                                anime44.start();
+                            }
+                        });
+                    }
+                    else
+                    {
+                        //Toast.makeText(getApplicationContext(),"Equal",Toast.LENGTH_SHORT).show();
+                    }
+                }
+            },350);
+
+            newCardsFlipped=0;
+            isAnimationRunning=false;
+        }
     }
 
 

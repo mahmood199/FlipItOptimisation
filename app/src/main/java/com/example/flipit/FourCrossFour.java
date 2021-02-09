@@ -33,6 +33,8 @@ public class FourCrossFour extends AppCompatActivity {
     private TextView text_below,text_top;
     private int co=0;
 
+
+
     private Chronometer mChronometer;
     private Thread mThreadChrono;
     private Context mContext;
@@ -361,7 +363,7 @@ public class FourCrossFour extends AppCompatActivity {
         @Override
         public void run() {
             while(mIsRunning)
-            { 
+            {
                 long since=System.currentTimeMillis()-mStartTime;
                 if(since>17000)
                 {
