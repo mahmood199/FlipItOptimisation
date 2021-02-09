@@ -8,6 +8,7 @@ import android.animation.ObjectAnimator;
 import android.annotation.SuppressLint;
 import android.content.Context;
 import android.os.Bundle;
+import android.os.Handler;
 import android.util.Log;
 import android.view.View;
 import android.view.WindowManager;
@@ -33,7 +34,9 @@ public class FourCrossFour extends AppCompatActivity {
     private TextView text_below,text_top;
     private int co=0;
 
-
+    private Button previousFlipped=null,currentFlipped=null;
+    private int newCardsFlipped=0,previousInt=0,currentInt=0;
+    private boolean isAnimationRunning;
 
     private Chronometer mChronometer;
     private Thread mThreadChrono;
@@ -97,7 +100,8 @@ public class FourCrossFour extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 co++;
-                startAnimation(row1iv1,a[0]);
+                if((!isAnimationRunning) && (newCardsFlipped==0 || previousFlipped!=row1iv1))
+                    flip(row1iv1,a[0]);
                 text_below.setText("Number of times button pressed:"+co+"\n");
             }
         });
@@ -107,7 +111,8 @@ public class FourCrossFour extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 co++;
-                startAnimation(row1iv2,a[1]);
+                if((!isAnimationRunning) && (newCardsFlipped==0 || previousFlipped!=row1iv2))
+                    flip(row1iv2,a[1]);
                 text_below.setText("Number of times button pressed:"+co+"\n");
             }
         });
@@ -117,7 +122,8 @@ public class FourCrossFour extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 co++;
-                startAnimation(row1iv3,a[2]);
+                if((!isAnimationRunning) && (newCardsFlipped==0 || previousFlipped!=row1iv3))
+                    flip(row1iv3,a[2]);
                 text_below.setText("Number of times button pressed:"+co+"\n");
             }
         });
@@ -127,7 +133,8 @@ public class FourCrossFour extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 co++;
-                startAnimation(row1iv4,a[3]);
+                if((!isAnimationRunning) && (newCardsFlipped==0 || previousFlipped!=row1iv4))
+                    flip(row1iv4,a[3]);
                 text_below.setText("Number of times button pressed:"+co+"\n");
             }
         });
@@ -137,7 +144,8 @@ public class FourCrossFour extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 co++;
-                startAnimation(row2iv1,a[4]);
+                if((!isAnimationRunning) && (newCardsFlipped==0 || previousFlipped!=row2iv1))
+                    flip(row2iv1,a[4]);
                 text_below.setText("Number of times button pressed:"+co+"\n");
             }
         });
@@ -147,7 +155,8 @@ public class FourCrossFour extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 co++;
-                startAnimation(row2iv2,a[5]);
+                if((!isAnimationRunning) && (newCardsFlipped==0 || previousFlipped!=row2iv2))
+                    flip(row2iv2,a[5]);
                 text_below.setText("Number of times button pressed:"+co+"\n");
             }
         });
@@ -157,7 +166,8 @@ public class FourCrossFour extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 co++;
-                startAnimation(row2iv3,a[6]);
+                if((!isAnimationRunning) && (newCardsFlipped==0 || previousFlipped!=row2iv3))
+                    flip(row2iv3,a[6]);
                 text_below.setText("Number of times button pressed:"+co+"\n");
             }
         });
@@ -167,7 +177,8 @@ public class FourCrossFour extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 co++;
-                startAnimation(row2iv4,a[7]);
+                if((!isAnimationRunning) && (newCardsFlipped==0 || previousFlipped!=row2iv4))
+                    flip(row2iv4,a[7]);
                 text_below.setText("Number of times button pressed:"+co+"\n");
             }
         });
@@ -177,7 +188,8 @@ public class FourCrossFour extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 co++;
-                startAnimation(row3iv1,a[8]);
+                if((!isAnimationRunning) && (newCardsFlipped==0 || previousFlipped!=row3iv1))
+                    flip(row3iv1,a[8]);
                 text_below.setText("Number of times button pressed:"+co+"\n");
             }
         });
@@ -187,7 +199,8 @@ public class FourCrossFour extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 co++;
-                startAnimation(row3iv2,a[9]);
+                if((!isAnimationRunning) && (newCardsFlipped==0 || previousFlipped!=row3iv2))
+                    flip(row3iv2,a[9]);
                 text_below.setText("Number of times button pressed:"+co+"\n");
             }
         });
@@ -197,7 +210,8 @@ public class FourCrossFour extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 co++;
-                startAnimation(row3iv3,a[10]);
+                if((!isAnimationRunning) && (newCardsFlipped==0 || previousFlipped!=row3iv3))
+                    flip(row3iv3,a[10]);
                 text_below.setText("Number of times button pressed:"+co+"\n");
             }
         });
@@ -207,7 +221,8 @@ public class FourCrossFour extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 co++;
-                startAnimation(row3iv4,a[11]);
+                if((!isAnimationRunning) && (newCardsFlipped==0 || previousFlipped!=row3iv4))
+                    flip(row3iv4,a[11]);
                 text_below.setText("Number of times button pressed:"+co+"\n");
             }
         });
@@ -217,7 +232,8 @@ public class FourCrossFour extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 co++;
-                startAnimation(row4iv1,a[12]);
+                if((!isAnimationRunning) && (newCardsFlipped==0 || previousFlipped!=row4iv1))
+                    flip(row4iv1,a[12]);
                 text_below.setText("Number of times button pressed:"+co+"\n");
             }
         });
@@ -227,7 +243,8 @@ public class FourCrossFour extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 co++;
-                startAnimation(row4iv2,a[13]);
+                if((!isAnimationRunning) && (newCardsFlipped==0 || previousFlipped!=row4iv2))
+                    flip(row4iv2,a[13]);
                 text_below.setText("Number of times button pressed:"+co+"\n");
             }
         });
@@ -237,7 +254,8 @@ public class FourCrossFour extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 co++;
-                startAnimation(row4iv3,a[14]);
+                if((!isAnimationRunning) && (newCardsFlipped==0 || previousFlipped!=row4iv3))
+                    flip(row4iv3,a[14]);
                 text_below.setText("Number of times button pressed:"+co+"\n");
             }
         });
@@ -247,7 +265,8 @@ public class FourCrossFour extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 co++;
-                startAnimation(row4iv4,a[15]);
+                if((!isAnimationRunning) && (newCardsFlipped==0 || previousFlipped!=row4iv4))
+                    flip(row4iv4,a[15]);
                 text_below.setText("Number of times button pressed:"+co+"\n");
             }
         });
@@ -282,29 +301,133 @@ public class FourCrossFour extends AppCompatActivity {
     }
 
 
-    void startAnimation(final Button XYZ,final int num) {
-        ObjectAnimator anime1=ObjectAnimator.ofFloat(XYZ,"scaleX",1f,0f);
-        final ObjectAnimator anime2=ObjectAnimator.ofFloat(XYZ,"scaleX",0f,1f);
 
-        anime1.setInterpolator(new DecelerateInterpolator());
-        anime1.setDuration(100);
+    void flip(Button Btn,int num)
+    {
+        if(newCardsFlipped==0)
+        {
+            previousFlipped=Btn;
+            previousInt=num;
 
-        anime2.setInterpolator(new AccelerateInterpolator());
-        anime2.setDuration(100);
+            final ObjectAnimator anime1=ObjectAnimator.ofFloat(previousFlipped,"scaleX",1f,0f);
+            final ObjectAnimator anime2=ObjectAnimator.ofFloat(previousFlipped,"scaleX",0f,1f);
 
-        anime1.start();
-        anime1.addListener(new AnimatorListenerAdapter() {
-            @Override
-            public void onAnimationEnd(Animator animation) {
-                super.onAnimationEnd(animation);
+            anime1.setInterpolator(new DecelerateInterpolator());
+            anime1.setDuration(100);
 
-                if(XYZ.getText().toString()==Integer.toString(num))
-                    XYZ.setText("FRONT");
-                else if(XYZ.getText().toString()=="FRONT")
-                    XYZ.setText(Integer.toString(num));
-                anime2.start();
-            }
-        });
+            anime2.setInterpolator(new AccelerateInterpolator());
+            anime2.setDuration(100);
+
+            isAnimationRunning=true;
+            anime1.start();
+
+            anime1.addListener(new AnimatorListenerAdapter() {
+                @Override
+                public void onAnimationEnd(Animator animation) {
+                    super.onAnimationEnd(animation);
+
+                    if(previousFlipped.getText().toString()=="FRONT")
+                        previousFlipped.setText(Integer.toString(previousInt));
+                    anime2.start();
+                }
+            });
+            newCardsFlipped++;
+            //Toast.makeText(getApplicationContext(),Integer.toString(previousInt),Toast.LENGTH_SHORT).show();
+            isAnimationRunning=false;
+        }
+
+        else if(newCardsFlipped==1)
+        {
+            currentFlipped=Btn;
+            currentInt=num;
+
+            final ObjectAnimator anime1=ObjectAnimator.ofFloat(currentFlipped,"scaleX",1f,0f);
+            final ObjectAnimator anime2=ObjectAnimator.ofFloat(currentFlipped,"scaleX",0f,1f);
+
+            anime1.setInterpolator(new DecelerateInterpolator());
+            anime1.setDuration(100);
+
+            anime2.setInterpolator(new AccelerateInterpolator());
+            anime2.setDuration(100);
+
+            isAnimationRunning=true;
+            anime1.start();
+
+            anime1.addListener(new AnimatorListenerAdapter() {
+                @Override
+                public void onAnimationEnd(Animator animation) {
+                    super.onAnimationEnd(animation);
+
+                    if(currentFlipped.getText().toString()=="FRONT")
+                        currentFlipped.setText(Integer.toString(currentInt));
+                    anime2.start();
+                }
+            });
+            //Toast.makeText(getApplicationContext(), Integer.toString(currentInt), Toast.LENGTH_SHORT).show();
+
+            newCardsFlipped++;
+
+
+            Handler handler=new Handler();
+
+            handler.postDelayed(new Runnable() {
+                @Override
+                public void run() {
+                    if(currentInt!=previousInt)
+                    {
+                        //Toast.makeText(getApplicationContext(),"Not equal",Toast.LENGTH_SHORT).show();
+                        final ObjectAnimator anime11=ObjectAnimator.ofFloat(currentFlipped,"scaleX",1f,0f);
+                        final ObjectAnimator anime22=ObjectAnimator.ofFloat(currentFlipped,"scaleX",0f,1f);
+
+                        anime11.setInterpolator(new DecelerateInterpolator());
+                        anime11.setDuration(100);
+
+                        anime22.setInterpolator(new AccelerateInterpolator());
+                        anime22.setDuration(100);
+
+                        anime11.start();
+
+                        anime11.addListener(new AnimatorListenerAdapter() {
+                            @Override
+                            public void onAnimationEnd(Animator animation) {
+                                super.onAnimationEnd(animation);
+
+                                currentFlipped.setText("FRONT");
+                                anime22.start();
+                            }
+                        });
+
+                        final ObjectAnimator anime33=ObjectAnimator.ofFloat(previousFlipped,"scaleX",1f,0f);
+                        final ObjectAnimator anime44=ObjectAnimator.ofFloat(previousFlipped,"scaleX",0f,1f);
+
+                        anime33.setInterpolator(new DecelerateInterpolator());
+                        anime33.setDuration(100);
+
+                        anime44.setInterpolator(new AccelerateInterpolator());
+                        anime44.setDuration(100);
+
+                        anime33.start();
+
+                        anime33.addListener(new AnimatorListenerAdapter() {
+                            @Override
+                            public void onAnimationEnd(Animator animation) {
+                                super.onAnimationEnd(animation);
+
+                                previousFlipped.setText("FRONT");
+                                anime44.start();
+                            }
+                        });
+                    }
+                    else
+                    {
+                        //Toast.makeText(getApplicationContext(),"Equal",Toast.LENGTH_SHORT).show();
+                    }
+                }
+            },350);
+
+            newCardsFlipped=0;
+            isAnimationRunning=false;
+        }
     }
 
 
