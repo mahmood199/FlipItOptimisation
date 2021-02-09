@@ -15,8 +15,6 @@ import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.example.clock.Chronometer2;
-import com.example.clock.Chronometer3;
 
 import java.util.Random;
 
@@ -458,6 +456,18 @@ public class SixCrossSix extends AppCompatActivity {
                     mThreadChrono.start();
                     mChronometer.start();
                 }
+                else
+                {
+                    //Destroying previous instances
+                    mThreadChrono.interrupt();
+                    mChronometer.stop();
+
+                    //Creating new ones :)
+                    mChronometer = new Chronometer3(mContext);
+                    mThreadChrono=new Thread(mChronometer);
+                    mThreadChrono.start();
+                    mChronometer.start();
+                }
             }
         });
 
@@ -490,9 +500,13 @@ public class SixCrossSix extends AppCompatActivity {
 
     public void onBackPressed(){
 
-
         if(BackPressedTime+2000>System.currentTimeMillis()) {
             backToast.cancel();
+            if(mChronometer!=null)
+            {
+                mThreadChrono.interrupt();
+                mChronometer.stop();
+            }
             super.onBackPressed();
             return;
         }
@@ -512,4 +526,44 @@ public class SixCrossSix extends AppCompatActivity {
             }
         });
     }
+
+    public class Chronometer3 implements Runnable{
+
+        private Context mContext;
+        private long mStartTime;
+        boolean mIsRunning;
+        private long x=1000;
+
+        public Chronometer3(Context context)
+        {
+            mContext=context;
+        }
+
+        public void start(){
+            mStartTime=System.currentTimeMillis();
+            mIsRunning=true;
+        }
+
+        public void stop() {
+            mIsRunning=false;
+        }
+
+        @Override
+        public void run() {
+            while(mIsRunning)
+            {
+                long since=System.currentTimeMillis()-mStartTime;
+                if(since>37000)
+                    break;
+                since=(37000-since);
+                long seconds=(int) since/x;
+                long milliseconds=(int) (since)%x;
+
+                ((SixCrossSix)mContext).updateTimerText(String.format("%02d:%03d",seconds,milliseconds));
+            }
+
+            mIsRunning=false;
+        }
+    }
+
 }

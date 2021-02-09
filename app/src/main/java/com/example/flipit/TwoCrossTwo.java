@@ -111,6 +111,18 @@ public class TwoCrossTwo extends AppCompatActivity {
                     mThreadChrono.start();
                     mChronometer.start();
                 }
+                else
+                {
+                    //Destroying previous instances
+                    mThreadChrono.interrupt();
+                    mChronometer.stop();
+
+                    //Creating new ones :)
+                    mChronometer = new Chronometer2(mContext);
+                    mThreadChrono=new Thread(mChronometer);
+                    mThreadChrono.start();
+                    mChronometer.start();
+                }
             }
         });
 
@@ -148,6 +160,11 @@ public class TwoCrossTwo extends AppCompatActivity {
 
         if(BackPressedTime+2000>System.currentTimeMillis()) {
             backToast.cancel();
+            if(mChronometer!=null)
+            {
+                mThreadChrono.interrupt();
+                mChronometer.stop();
+            }
             super.onBackPressed();
             return;
         }
