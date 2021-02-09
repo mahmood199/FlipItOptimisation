@@ -554,15 +554,16 @@ public class SixCrossSix extends AppCompatActivity {
             {
                 long since=System.currentTimeMillis()-mStartTime;
                 if(since>37000)
+                {
+                    stop();
                     break;
+                }
                 since=(37000-since);
                 long seconds=(int) since/x;
                 long milliseconds=(int) (since)%x;
 
                 ((SixCrossSix)mContext).updateTimerText(String.format("%02d:%03d",seconds,milliseconds));
             }
-
-            mIsRunning=false;
         }
     }
 

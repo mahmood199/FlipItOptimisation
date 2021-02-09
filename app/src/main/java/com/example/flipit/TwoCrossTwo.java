@@ -212,14 +212,16 @@ public class TwoCrossTwo extends AppCompatActivity {
             while (mIsRunning) {
                 long since = System.currentTimeMillis() - mStartTime;
                 if (since > 5000)
+                {
+                    stop();
                     break;
-                since = (5000 - since);
+                }
+                    since = (5000 - since);
                 long seconds = (int) since / x;
                 long milliseconds = (int) (since) % x;
 
                 ((TwoCrossTwo) mContext).updateTimerText(String.format("%02d:%03d", seconds, milliseconds));
             }
-            mIsRunning = false;
         }
     }
 }

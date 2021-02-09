@@ -361,7 +361,7 @@ public class FourCrossFour extends AppCompatActivity {
         @Override
         public void run() {
             while(mIsRunning)
-            {
+            { 
                 long since=System.currentTimeMillis()-mStartTime;
                 if(since>17000)
                 {
