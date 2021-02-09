@@ -8,21 +8,22 @@ import android.animation.ObjectAnimator;
 import android.annotation.SuppressLint;
 import android.content.Context;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.view.WindowManager;
 import android.view.animation.AccelerateInterpolator;
 import android.view.animation.DecelerateInterpolator;
 import android.widget.Button;
-//import android.widget.Chronometer;
 import android.widget.TextView;
 import android.widget.Toast;
-import com.example.clock.Chronometer;
+
 
 import java.util.Random;
 
 public class FourCrossFour extends AppCompatActivity {
 
 
+    private String TAG;
     private Button    start_timer, row1iv1 ,row1iv2 ,row1iv3 ,row1iv4 ,
                                    row2iv1 ,row2iv2 ,row2iv3 ,row2iv4 ,
                                    row3iv1 ,row3iv2 ,row3iv3 ,row3iv4 ,
@@ -260,10 +261,24 @@ public class FourCrossFour extends AppCompatActivity {
                     mThreadChrono=new Thread(mChronometer);
                     mThreadChrono.start();
                     mChronometer.start();
+                    Log.i(TAG, "New Instances created in FourCrossFour");
+                }
+                else
+                {
+                    //Destroying previous instances
+                    mThreadChrono.interrupt();
+                    mChronometer.stop();
+
+                    //Creating new ones :)
+                    mChronometer = new Chronometer(mContext);
+                    mThreadChrono=new Thread(mChronometer);
+                    mThreadChrono.start();
+                    mChronometer.start();
                 }
             }
         });
     }
+
 
     void startAnimation(final Button XYZ,final int num) {
         ObjectAnimator anime1=ObjectAnimator.ofFloat(XYZ,"scaleX",1f,0f);
@@ -290,10 +305,16 @@ public class FourCrossFour extends AppCompatActivity {
         });
     }
 
+
     public void onBackPressed() {
 
         if(BackPressedTime+2000>System.currentTimeMillis()) {
             backToast.cancel();
+            if(mChronometer!=null)
+            {
+                mThreadChrono.interrupt();
+                mChronometer.stop();
+            }
             super.onBackPressed();
             return;
         }
@@ -305,6 +326,7 @@ public class FourCrossFour extends AppCompatActivity {
         BackPressedTime=System.currentTimeMillis();
     }
 
+
     public void updateTimerText(final String time) {
         runOnUiThread(new Runnable() {
             @Override
@@ -312,6 +334,47 @@ public class FourCrossFour extends AppCompatActivity {
                 text_top.setText(time);
             }
         });
+    }
+
+
+    public class Chronometer implements Runnable{
+
+        private Context mContext;
+        private long mStartTime;
+        boolean mIsRunning;
+        private long x=1000;
+
+        public Chronometer(Context context)
+        {
+            mContext=context;
+        }
+
+        public void start(){
+            mStartTime=System.currentTimeMillis();
+            mIsRunning=true;
+        }
+
+        public void stop() {
+            mIsRunning=false;
+        }
+
+        @Override
+        public void run() {
+            while(mIsRunning)
+            {
+                long since=System.currentTimeMillis()-mStartTime;
+                if(since>17000)
+                {
+                    stop();
+                    break;
+                }
+                since=(17000-since);
+                long seconds=(int) since/x;
+                long milliseconds=(int) (since)%x;
+
+                ((FourCrossFour)mContext).updateTimerText(String.format("%02d:%03d",seconds,milliseconds));
+            }
+        }
     }
 }
 
