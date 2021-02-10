@@ -35,7 +35,7 @@ public class SixCrossSix extends AppCompatActivity {
                     r6iv1,r6iv2,r6iv3,r6iv4,r6iv5,r6iv6, start_button;
 
     private Button previousFlipped=null,currentFlipped=null;
-    private int newCardsFlipped=0,previousInt=0,currentInt=0;
+    private int newCardsFlipped=0,previousInt=0,currentInt=0,total=0;
     private boolean isAnimationRunning;
 
     private Chronometer3 mChronometer;
@@ -633,6 +633,9 @@ public class SixCrossSix extends AppCompatActivity {
                     {
                         disappear(previousFlipped);
                         disappear(currentFlipped);
+                        total+=2;
+                        if(total==36)
+                            Toast.makeText(getApplicationContext(),"Level Complete",Toast.LENGTH_SHORT).show();
                     }
                 }
             },350);
