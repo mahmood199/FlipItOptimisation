@@ -35,7 +35,7 @@ public class FourCrossFour extends AppCompatActivity {
     private int co=0;
 
     private Button previousFlipped=null,currentFlipped=null;
-    private int newCardsFlipped=0,previousInt=0,currentInt=0;
+    private int newCardsFlipped=0,previousInt=0,currentInt=0,total=0;
     private boolean isAnimationRunning;
 
     private Chronometer mChronometer;
@@ -422,6 +422,9 @@ public class FourCrossFour extends AppCompatActivity {
                     {
                         disappear(previousFlipped);
                         disappear(currentFlipped);
+                        total+=2;
+                        if(total==16)
+                            Toast.makeText(getApplicationContext(),"Level Complete",Toast.LENGTH_SHORT).show();
                     }
                 }
             },350);
@@ -430,6 +433,7 @@ public class FourCrossFour extends AppCompatActivity {
             isAnimationRunning=false;
         }
     }
+
 
     public void disappear(Button btn)
     {
@@ -440,6 +444,7 @@ public class FourCrossFour extends AppCompatActivity {
         animex.start();
         btn.setEnabled(false);
     }
+
 
     public void onBackPressed() {
 
