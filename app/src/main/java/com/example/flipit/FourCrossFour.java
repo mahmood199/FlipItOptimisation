@@ -420,7 +420,8 @@ public class FourCrossFour extends AppCompatActivity {
                     }
                     else
                     {
-                        //Toast.makeText(getApplicationContext(),"Equal",Toast.LENGTH_SHORT).show();
+                        disappear(previousFlipped);
+                        disappear(currentFlipped);
                     }
                 }
             },350);
@@ -430,6 +431,15 @@ public class FourCrossFour extends AppCompatActivity {
         }
     }
 
+    public void disappear(Button btn)
+    {
+        final ObjectAnimator animex=ObjectAnimator.ofFloat(btn,"alpha",1f,0f);
+        animex.setInterpolator(new DecelerateInterpolator());
+        animex.setDuration(100);
+
+        animex.start();
+        btn.setEnabled(false);
+    }
 
     public void onBackPressed() {
 
