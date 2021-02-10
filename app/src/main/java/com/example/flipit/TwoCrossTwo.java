@@ -11,6 +11,7 @@ import android.animation.ObjectAnimator;
 import android.content.Context;
 import android.os.Bundle;
 import android.os.Handler;
+import android.util.Log;
 import android.view.View;
 import android.view.WindowManager;
 import android.view.animation.AccelerateInterpolator;
@@ -38,6 +39,7 @@ public class TwoCrossTwo extends AppCompatActivity {
     private int newCardsFlipped=0,previousInt=0,currentInt=0;
     private boolean isAnimationRunning;
 
+    public String TAG="TwoCrossTwo ";
 
     final int a[]={1,1,2,2};
 
@@ -79,7 +81,10 @@ public class TwoCrossTwo extends AppCompatActivity {
             public void onClick(View v) {
                 co++;
                 if((!isAnimationRunning) && (newCardsFlipped==0 || previousFlipped!=row1iv1))
+                {
                     flip(row1iv1,a[0]);
+                    Log.i(TAG, String.valueOf(R.id.first_row_first_image));
+                }
                 text_below.setText("Number of times button pressed:"+co+"\n");
             }
         });
@@ -89,7 +94,10 @@ public class TwoCrossTwo extends AppCompatActivity {
             public void onClick(View v) {
                 co++;
                 if((!isAnimationRunning) && (newCardsFlipped==0 || previousFlipped!=row1iv2))
+                {
                     flip(row1iv2,a[1]);
+                    Log.i(TAG, String.valueOf(R.id.first_row_second_image));
+                }
                 text_below.setText("Number of times button pressed:"+co+"\n");
             }
         });
@@ -98,16 +106,24 @@ public class TwoCrossTwo extends AppCompatActivity {
             public void onClick(View v) {
                 co++;
                 if((!isAnimationRunning) && (newCardsFlipped==0 || previousFlipped!=row2iv1))
+                {
                     flip(row2iv1,a[2]);
+                    Log.i(TAG, String.valueOf(R.id.second_row_first_image));
+                }
                 text_below.setText("Number of times button pressed:"+co+"\n");
             }
         });
+
+
         row2iv2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 co++;
                 if((!isAnimationRunning) && (newCardsFlipped==0 || previousFlipped!=row2iv2))
+                {
                     flip(row2iv2,a[3]);
+                    Log.i(TAG, String.valueOf(R.id.second_row_second_image));
+                }
                 text_below.setText("Number of times button pressed:"+co+"\n");
             }
         });
@@ -261,7 +277,8 @@ public class TwoCrossTwo extends AppCompatActivity {
                     }
                     else
                     {
-                        //Toast.makeText(getApplicationContext(),"Equal",Toast.LENGTH_SHORT).show();
+                        disappear(previousFlipped);
+                        disappear(currentFlipped);
                     }
                 }
             },350);
@@ -271,6 +288,15 @@ public class TwoCrossTwo extends AppCompatActivity {
         }
     }
 
+    public void disappear(Button btn)
+    {
+        final ObjectAnimator animex=ObjectAnimator.ofFloat(btn,"alpha",1f,0f);
+        animex.setInterpolator(new DecelerateInterpolator());
+        animex.setDuration(100);
+
+        animex.start();
+        btn.setEnabled(false);
+    }
 
     @Override
     public void onBackPressed() {
