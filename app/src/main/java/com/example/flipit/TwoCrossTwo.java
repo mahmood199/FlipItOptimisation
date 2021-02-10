@@ -36,7 +36,7 @@ public class TwoCrossTwo extends AppCompatActivity {
     private Context mContext;
 
     private Button previousFlipped=null,currentFlipped=null;
-    private int newCardsFlipped=0,previousInt=0,currentInt=0;
+    private int newCardsFlipped=0,previousInt=0,currentInt=0,total=0;
     private boolean isAnimationRunning;
 
     public String TAG="TwoCrossTwo ";
@@ -279,6 +279,9 @@ public class TwoCrossTwo extends AppCompatActivity {
                     {
                         disappear(previousFlipped);
                         disappear(currentFlipped);
+                        total+=2;
+                        if(total==4)
+                            Toast.makeText(getApplicationContext(),"Level Complete",Toast.LENGTH_SHORT).show();
                     }
                 }
             },350);
