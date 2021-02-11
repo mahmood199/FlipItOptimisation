@@ -1,5 +1,6 @@
 package com.example.flipit;
 
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.animation.Animator;
@@ -7,6 +8,7 @@ import android.animation.AnimatorListenerAdapter;
 import android.animation.ObjectAnimator;
 import android.annotation.SuppressLint;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.os.Bundle;
 import android.os.Handler;
 import android.util.Log;
@@ -424,7 +426,7 @@ public class FourCrossFour extends AppCompatActivity {
                         disappear(currentFlipped);
                         total+=2;
                         if(total==16)
-                            Toast.makeText(getApplicationContext(),"Level Complete",Toast.LENGTH_SHORT).show();
+                            Toast.makeText(getApplicationContext(),"Level Completed",Toast.LENGTH_SHORT).show();
                     }
                 }
             },350);
@@ -448,22 +450,32 @@ public class FourCrossFour extends AppCompatActivity {
 
     public void onBackPressed() {
 
-        if(BackPressedTime+2000>System.currentTimeMillis()) {
-            backToast.cancel();
-            if(mChronometer!=null)
-            {
-                mThreadChrono.interrupt();
-                mChronometer.stop();
+        final AlertDialog.Builder options= new AlertDialog.Builder(FourCrossFour.this);
+        options.setTitle("Warning");
+        options.setMessage("If you leave this level,you will lose your progress");
+
+        options.setPositiveButton("Leave", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+
+                if(mChronometer!=null) {
+                    mThreadChrono.interrupt();
+                    mChronometer.stop();
+                }
+
+                FourCrossFour.super.onBackPressed();
+                return;
             }
-            super.onBackPressed();
-            return;
-        }
-        else
-        {
-            backToast= Toast.makeText(getBaseContext(),"Press again to leave level",Toast.LENGTH_SHORT);
-            backToast.show();
-        }
-        BackPressedTime=System.currentTimeMillis();
+        });
+
+        options.setNegativeButton("Stay", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                options.setCancelable(true);
+            }
+        });
+
+        options.show();
     }
 
 
