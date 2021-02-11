@@ -157,8 +157,9 @@ public class TwoCrossTwo extends AppCompatActivity {
             }
         });
 
-    }
 
+
+    }
 
 
     //Function to increase co value
@@ -191,6 +192,7 @@ public class TwoCrossTwo extends AppCompatActivity {
                     anime2.start();
                 }
             });
+
             newCardsFlipped++;
             //Toast.makeText(getApplicationContext(),Integer.toString(previousInt),Toast.LENGTH_SHORT).show();
             isAnimationRunning=false;
@@ -284,7 +286,17 @@ public class TwoCrossTwo extends AppCompatActivity {
                         disappear(currentFlipped);
                         total+=2;
                         if(total==4)
-                            Toast.makeText(getApplicationContext(),"Level Completed",Toast.LENGTH_SHORT).show();
+                        {
+                            mChronometer.stop();
+                            mThreadChrono.interrupt();
+
+
+                            if(timer.getText().toString()=="00:000")
+                                Toast.makeText(getApplicationContext(),"You failed to complete the level within time",Toast.LENGTH_SHORT).show();
+                            else
+                                Toast.makeText(getApplicationContext(),"Level Completed in "+timer.getText().toString(),Toast.LENGTH_SHORT).show();
+
+                        }
                     }
                 }
             },350);
@@ -378,7 +390,7 @@ public class TwoCrossTwo extends AppCompatActivity {
                     stop();
                     break;
                 }
-                    since = (5000 - since);
+                //    since = (5000 - since);
                 long seconds = (int) since / x;
                 long milliseconds = (int) (since) % x;
 
