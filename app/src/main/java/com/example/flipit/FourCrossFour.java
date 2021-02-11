@@ -425,15 +425,15 @@ public class FourCrossFour extends AppCompatActivity {
                         disappear(previousFlipped);
                         disappear(currentFlipped);
                         total+=2;
-
-
-                        if(total==16) {
-                            mChronometer.stop();
-                            mThreadChrono.interrupt();
-                            if (text_top.getText().toString() == "00:000")
-                                Toast.makeText(getApplicationContext(), "You failed to complete the level within time", Toast.LENGTH_SHORT).show();
-                            else
+                        if(total==16)
+                        {
+                            if(mChronometer.mIsRunning)
+                            {
+                                mChronometer.stop();
+                                mThreadChrono.interrupt();
                                 Toast.makeText(getApplicationContext(), "Level Completed in " + text_top.getText().toString(), Toast.LENGTH_SHORT).show();
+                            }
+
                         }
                     }
                 }
@@ -525,6 +525,7 @@ public class FourCrossFour extends AppCompatActivity {
                 long since=System.currentTimeMillis()-mStartTime;
                 if(since>17000)
                 {
+
                     stop();
                     break;
                 }

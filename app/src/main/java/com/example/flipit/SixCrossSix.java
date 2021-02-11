@@ -638,12 +638,12 @@ public class SixCrossSix extends AppCompatActivity {
                         total+=2;
                         if(total==36)
                         {
-                            mChronometer.stop();
-                            mThreadChrono.interrupt();
-                            if (text_top.getText().toString() == "00:000")
-                                Toast.makeText(getApplicationContext(), "You failed to complete the level within time", Toast.LENGTH_SHORT).show();
-                            else
+                            if (mChronometer.mIsRunning)
+                            {
+                                mChronometer.stop();
+                                mThreadChrono.interrupt();
                                 Toast.makeText(getApplicationContext(), "Level Completed in " + text_top.getText().toString(), Toast.LENGTH_SHORT).show();
+                            }
                         }
                     }
                 }
@@ -733,6 +733,7 @@ public class SixCrossSix extends AppCompatActivity {
                 long since=System.currentTimeMillis()-mStartTime;
                 if(since>37000)
                 {
+
                     stop();
                     break;
                 }
@@ -744,5 +745,6 @@ public class SixCrossSix extends AppCompatActivity {
             }
         }
     }
+
 
 }

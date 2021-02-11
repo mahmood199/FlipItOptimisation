@@ -287,14 +287,12 @@ public class TwoCrossTwo extends AppCompatActivity {
                         total+=2;
                         if(total==4)
                         {
-                            mChronometer.stop();
-                            mThreadChrono.interrupt();
-
-
-                            if(timer.getText().toString()=="00:000")
-                                Toast.makeText(getApplicationContext(),"You failed to complete the level within time",Toast.LENGTH_SHORT).show();
-                            else
+                            if(mChronometer.mIsRunning)
+                            {
+                                mChronometer.stop();
+                                mThreadChrono.interrupt();
                                 Toast.makeText(getApplicationContext(),"Level Completed in "+timer.getText().toString(),Toast.LENGTH_SHORT).show();
+                            }
 
                         }
                     }
@@ -394,8 +392,41 @@ public class TwoCrossTwo extends AppCompatActivity {
                 long seconds = (int) since / x;
                 long milliseconds = (int) (since) % x;
 
+
                 ((TwoCrossTwo) mContext).updateTimerText(String.format("%02d:%03d", seconds, milliseconds));
             }
+            mIsRunning = false;
         }
+
+    }
+
+
+    public void resetAll()
+    {
+        mChronometer.stop();
+        mThreadChrono.interrupt();
+
+        Toast.makeText(getApplicationContext(),"Visited",Toast.LENGTH_SHORT).show();
+
+        final AlertDialog.Builder options= new AlertDialog.Builder(TwoCrossTwo.this);
+        options.setTitle("You ran out of time");
+
+        options.setPositiveButton("Restart", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                mChronometer=null;
+
+
+                row1iv1.setEnabled(true);   row1iv1.setText("FRONT");
+                row1iv2.setEnabled(true);   row1iv2.setText("FRONT");
+                row2iv1.setEnabled(true);   row2iv1.setText("FRONT");
+                row2iv2.setEnabled(true);   row2iv2.setText("FRONT");
+
+                timer.setText("00:000");
+
+            }
+        });
+
+        options.show();
     }
 }
