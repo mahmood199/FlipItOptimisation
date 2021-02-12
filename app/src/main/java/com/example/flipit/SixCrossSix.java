@@ -731,7 +731,7 @@ public class SixCrossSix extends AppCompatActivity {
             while(mIsRunning)
             {
                 long since=System.currentTimeMillis()-mStartTime;
-                if(since>37000)
+                if(since>72000)
                 {
 
                     stop();
