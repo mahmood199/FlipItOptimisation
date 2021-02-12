@@ -45,6 +45,7 @@ public class SixCrossSix extends AppCompatActivity {
     private Context mContext;
 
     final int a[]={1,1,1,1,1,1,2,2,2,2,2,2,3,3,3,3,3,3,4,4,4,4,4,4,5,5,5,5,5,5,6,6,6,6,6,6};
+    private boolean timeAvailable=true;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -101,18 +102,6 @@ public class SixCrossSix extends AppCompatActivity {
         r6iv4=(Button) findViewById(R.id.sxs_sixth_row_fourth_image);   r6iv4.setText("FRONT");
         r6iv5=(Button) findViewById(R.id.sxs_sixth_row_fifth_image);    r6iv5.setText("FRONT");
         r6iv6=(Button) findViewById(R.id.sxs_sixth_row_sixth_image);    r6iv6.setText("FRONT");
-
-        Random rand=new Random();
-        int i,j,temp,n=36;
-
-        for(i=n-1;i>0;i--)      //Fisher Yates Algorithm
-        {
-            j=rand.nextInt(i);
-            temp=a[j];
-            a[j]=a[i];
-            a[i]=temp;
-        }
-
 
 
         r1iv1.setOnClickListener(new View.OnClickListener() {
@@ -491,22 +480,36 @@ public class SixCrossSix extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
-                if(mChronometer == null)
-                {
-                    mChronometer = new Chronometer3(mContext);
-                    mThreadChrono=new Thread(mChronometer);
-                    mThreadChrono.start();
-                    mChronometer.start();
-                }
-                else
-                {
-                    //Destroying previous instances
-                    mThreadChrono.interrupt();
-                    mChronometer.stop();
+                if(mChronometer == null) {
+                    previousFlipped = null;
+                    currentFlipped = null;
+                    previousInt = 0;
+                    currentInt = 0;
 
-                    //Creating new ones :)
+                    newCardsFlipped = 0;
+                    total = 0;
+                    co = 0;
+
+
+                    int i, j, n = 36, temp;
+                    Random rand = new Random();
+                    for (i = n - 1 ; i > 0 ; i--)      //Fisher Yates Algorithm
+                    {
+                        j=rand.nextInt(i);
+                        temp=a[j];
+                        a[j]=a[i];
+                        a[i]=temp;
+                    }
+
+                    r1iv1.setEnabled(true);      r1iv2.setEnabled(true);      r1iv3.setEnabled(true);      r1iv4.setEnabled(true);      r1iv5.setEnabled(true);        r1iv6.setEnabled(true);
+                    r2iv1.setEnabled(true);      r2iv2.setEnabled(true);      r2iv3.setEnabled(true);      r2iv4.setEnabled(true);      r2iv5.setEnabled(true);        r2iv6.setEnabled(true);
+                    r3iv1.setEnabled(true);      r3iv2.setEnabled(true);      r3iv3.setEnabled(true);      r3iv4.setEnabled(true);      r3iv5.setEnabled(true);        r3iv6.setEnabled(true);
+                    r4iv1.setEnabled(true);      r4iv2.setEnabled(true);      r4iv3.setEnabled(true);      r4iv4.setEnabled(true);      r4iv5.setEnabled(true);        r4iv6.setEnabled(true);
+                    r5iv1.setEnabled(true);      r5iv2.setEnabled(true);      r5iv3.setEnabled(true);      r5iv4.setEnabled(true);      r5iv5.setEnabled(true);        r5iv6.setEnabled(true);
+                    r6iv1.setEnabled(true);      r6iv2.setEnabled(true);      r6iv3.setEnabled(true);      r6iv4.setEnabled(true);      r6iv5.setEnabled(true);        r6iv6.setEnabled(true);
+
                     mChronometer = new Chronometer3(mContext);
-                    mThreadChrono=new Thread(mChronometer);
+                    mThreadChrono = new Thread(mChronometer);
                     mThreadChrono.start();
                     mChronometer.start();
                 }
@@ -705,6 +708,66 @@ public class SixCrossSix extends AppCompatActivity {
         });
     }
 
+    public void stopped()
+    {
+        AlertDialog.Builder adb=new AlertDialog.Builder(SixCrossSix.this);
+        adb.setCancelable(false);
+        adb.setTitle("You ran out of time");
+
+        r1iv1.setEnabled(false);      r1iv2.setEnabled(false);      r1iv3.setEnabled(false);      r1iv4.setEnabled(false);      r1iv5.setEnabled(false);        r1iv6.setEnabled(false);
+        r2iv1.setEnabled(false);      r2iv2.setEnabled(false);      r2iv3.setEnabled(false);      r2iv4.setEnabled(false);      r2iv5.setEnabled(false);        r2iv6.setEnabled(false);
+        r3iv1.setEnabled(false);      r3iv2.setEnabled(false);      r3iv3.setEnabled(false);      r3iv4.setEnabled(false);      r3iv5.setEnabled(false);        r3iv6.setEnabled(false);
+        r4iv1.setEnabled(false);      r4iv2.setEnabled(false);      r4iv3.setEnabled(false);      r4iv4.setEnabled(false);      r4iv5.setEnabled(false);        r4iv6.setEnabled(false);
+        r5iv1.setEnabled(false);      r5iv2.setEnabled(false);      r5iv3.setEnabled(false);      r5iv4.setEnabled(false);      r5iv5.setEnabled(false);        r5iv6.setEnabled(false);
+        r6iv1.setEnabled(false);      r6iv2.setEnabled(false);      r6iv3.setEnabled(false);      r6iv4.setEnabled(false);      r6iv5.setEnabled(false);        r6iv6.setEnabled(false);
+
+
+        mChronometer=null;
+        mThreadChrono.interrupt();
+        total=0;
+        co=0;
+
+        adb.setPositiveButton("Retry Level", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+
+                animateBack(r1iv1,false);     animateBack(r1iv2,false);     animateBack(r1iv3,false);     animateBack(r1iv4,false);     animateBack(r1iv5,false);     animateBack(r1iv6,false);
+                animateBack(r2iv1,false);     animateBack(r2iv2,false);     animateBack(r2iv3,false);     animateBack(r2iv4,false);     animateBack(r2iv5,false);     animateBack(r2iv6,false);
+                animateBack(r3iv1,false);     animateBack(r3iv2,false);     animateBack(r3iv3,false);     animateBack(r3iv4,false);     animateBack(r3iv5,false);     animateBack(r3iv6,false);
+                animateBack(r4iv1,false);     animateBack(r4iv2,false);     animateBack(r4iv3,false);     animateBack(r4iv4,false);     animateBack(r4iv5,false);     animateBack(r4iv6,false);
+                animateBack(r5iv1,false);     animateBack(r5iv2,false);     animateBack(r5iv3,false);     animateBack(r5iv4,false);     animateBack(r5iv5,false);     animateBack(r5iv6,false);
+                animateBack(r6iv1,false);     animateBack(r6iv2,false);     animateBack(r6iv3,false);     animateBack(r6iv4,false);     animateBack(r6iv5,false);     animateBack(r6iv6,false);
+
+                text_below.setText("Number of times button pressed=0");
+
+            }
+        });
+        adb.show();
+    }
+
+
+    void animateBack(final Button btn,boolean enable)
+    {
+        btn.setEnabled(enable);
+        if(!btn.getText().toString().equals("FRONT"))
+        {
+            ObjectAnimator X = ObjectAnimator.ofFloat(btn, "alpha", 0f, 1f);
+            X.setInterpolator(new AccelerateInterpolator());
+            X.setDuration(10);
+            X.start();
+
+            X.addListener(new AnimatorListenerAdapter() {
+                @Override
+                public void onAnimationEnd(Animator animation) {
+                    super.onAnimationEnd(animation);
+
+                    btn.setText("FRONT");
+                }
+            });
+        }
+    }
+
+
     public class Chronometer3 implements Runnable{
 
         private Context mContext;
@@ -733,18 +796,20 @@ public class SixCrossSix extends AppCompatActivity {
                 long since=System.currentTimeMillis()-mStartTime;
                 if(since>72000)
                 {
-
+                    timeAvailable=false;
+                    ((SixCrossSix)mContext).stopped();
                     stop();
                     break;
                 }
-                //since=(37000-since);
+
                 long seconds=(int) since/x;
                 long milliseconds=(int) (since)%x;
 
                 ((SixCrossSix)mContext).updateTimerText(String.format("%02d:%03d",seconds,milliseconds));
             }
+            mIsRunning=false;
         }
-    }
 
+    }
 
 }

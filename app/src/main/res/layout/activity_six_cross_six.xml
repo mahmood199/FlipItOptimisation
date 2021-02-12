@@ -372,6 +372,7 @@
         android:layout_height="40dp"
         android:layout_marginTop="25dp"
         android:layout_marginBottom="50dp"
+        android:background="#FFFFFF"
         android:text="START"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
