@@ -45,6 +45,7 @@ public class FourCrossFour extends AppCompatActivity {
     private Context mContext;
 
     final int a[]={1,1,1,1,2,2,2,2,3,3,3,3,4,4,4,4};
+    private boolean timeAvailable;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -85,17 +86,6 @@ public class FourCrossFour extends AppCompatActivity {
         row4iv4=(Button) findViewById(R.id.fourth_row_fourth_image);    row4iv4.setText("FRONT");
 
 
-
-        int i,j,n=16,temp;
-        Random rand=new Random();
-
-        for(i=n-1;i>0;i--)      //Fisher Yates Algorithm
-        {
-            j=rand.nextInt(i);
-            temp=a[j];
-            a[j]=a[i];
-            a[i]=temp;
-        }
 
         row1iv1.setOnClickListener(new View.OnClickListener() {
             @SuppressLint("SetTextI18n")
@@ -273,35 +263,51 @@ public class FourCrossFour extends AppCompatActivity {
             }
         });
 
+        row1iv1.setEnabled(false);      row1iv2.setEnabled(false);      row1iv3.setEnabled(false);      row1iv4.setEnabled(false);
+        row2iv1.setEnabled(false);      row2iv2.setEnabled(false);      row2iv3.setEnabled(false);      row2iv4.setEnabled(false);
+        row3iv1.setEnabled(false);      row3iv2.setEnabled(false);      row3iv3.setEnabled(false);      row3iv4.setEnabled(false);
+        row4iv1.setEnabled(false);      row4iv2.setEnabled(false);      row4iv3.setEnabled(false);      row4iv4.setEnabled(false);
+
+
 
         start_timer.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 
-                if(mChronometer == null)
-                {
-                    mChronometer = new Chronometer(mContext);
-                    mThreadChrono=new Thread(mChronometer);
-                    mThreadChrono.start();
-                    mChronometer.start();
-                    Log.i(TAG, "New Instances created in FourCrossFour");
-                }
-                else
-                {
-                    //Destroying previous instances
-                    mThreadChrono.interrupt();
-                    mChronometer.stop();
+                if(mChronometer == null) {
+                    previousFlipped = null;
+                    currentFlipped = null;
+                    previousInt = 0;
+                    currentInt = 0;
 
-                    //Creating new ones :)
+                    newCardsFlipped = 0;
+                    total = 0;
+                    co = 0;
+
+
+                    int i, j, n = 16, temp;
+                    Random rand = new Random();
+                    for (i = n - 1 ; i > 0 ; i--)      //Fisher Yates Algorithm
+                    {
+                        j=rand.nextInt(i);
+                        temp=a[j];
+                        a[j]=a[i];
+                        a[i]=temp;
+                    }
+
+                    animateBack(row1iv1,true);      animateBack(row1iv2,true);      animateBack(row1iv3,true);      animateBack(row1iv4,true);
+                    animateBack(row2iv1,true);      animateBack(row2iv2,true);      animateBack(row2iv3,true);      animateBack(row2iv4,true);
+                    animateBack(row3iv1,true);      animateBack(row3iv2,true);      animateBack(row3iv3,true);      animateBack(row3iv4,true);
+                    animateBack(row4iv1,true);      animateBack(row4iv2,true);      animateBack(row4iv3,true);      animateBack(row4iv4,true);
+
                     mChronometer = new Chronometer(mContext);
-                    mThreadChrono=new Thread(mChronometer);
+                    mThreadChrono = new Thread(mChronometer);
                     mThreadChrono.start();
                     mChronometer.start();
                 }
             }
         });
     }
-
 
 
     void flip(Button Btn,int num)
@@ -496,6 +502,65 @@ public class FourCrossFour extends AppCompatActivity {
         });
     }
 
+    private void stopped()
+    {
+        runOnUiThread(new Runnable() {
+            @Override
+            public void run() {
+
+                AlertDialog.Builder adb=new AlertDialog.Builder(FourCrossFour.this);
+                adb.setCancelable(false);
+                adb.setTitle("You ran out of time");
+
+                row1iv1.setEnabled(false);      row1iv2.setEnabled(false);      row1iv3.setEnabled(false);      row1iv4.setEnabled(false);
+                row2iv1.setEnabled(false);      row2iv2.setEnabled(false);      row2iv3.setEnabled(false);      row2iv4.setEnabled(false);
+                row3iv1.setEnabled(false);      row3iv2.setEnabled(false);      row3iv3.setEnabled(false);      row3iv4.setEnabled(false);
+                row4iv1.setEnabled(false);      row4iv2.setEnabled(false);      row4iv3.setEnabled(false);      row4iv4.setEnabled(false);
+
+                mChronometer=null;
+                mThreadChrono.interrupt();
+                total=0;
+                co=0;
+
+                adb.setPositiveButton("Retry this level", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        animateBack(row1iv1,false);     animateBack(row1iv2,false);     animateBack(row1iv3,false);     animateBack(row1iv4,false);
+                        animateBack(row2iv1,false);     animateBack(row2iv2,false);     animateBack(row2iv3,false);     animateBack(row2iv4,false);
+                        animateBack(row3iv1,false);     animateBack(row3iv2,false);     animateBack(row3iv3,false);     animateBack(row3iv4,false);
+                        animateBack(row4iv1,false);     animateBack(row4iv2,false);     animateBack(row4iv3,false);     animateBack(row4iv4,false);
+
+                        text_below.setText("Number of times button pressed=0");
+                    }
+                });
+                adb.show();
+
+            }
+        });
+    }
+
+
+    void animateBack(final Button btn,boolean enable)
+    {
+        btn.setEnabled(enable);
+        if(!btn.getText().toString().equals("FRONT"))
+        {
+            ObjectAnimator X = ObjectAnimator.ofFloat(btn, "alpha", 0f, 1f);
+            X.setInterpolator(new AccelerateInterpolator());
+            X.setDuration(10);
+            X.start();
+
+            X.addListener(new AnimatorListenerAdapter() {
+                @Override
+                public void onAnimationEnd(Animator animation) {
+                    super.onAnimationEnd(animation);
+
+                    btn.setText("FRONT");
+                }
+            });
+        }
+    }
+
 
     public class Chronometer implements Runnable{
 
@@ -504,37 +569,37 @@ public class FourCrossFour extends AppCompatActivity {
         boolean mIsRunning;
         private long x=1000;
 
+
         public Chronometer(Context context)
         {
-            mContext=context;
+            mContext = context;
         }
 
-        public void start(){
-            mStartTime=System.currentTimeMillis();
-            mIsRunning=true;
+        public void start() {
+            mStartTime = System.currentTimeMillis();
+            mIsRunning = true;
         }
 
-        public void stop() {
-            mIsRunning=false;
-        }
+        public void stop() { mIsRunning = false; }
 
         @Override
         public void run() {
-            while(mIsRunning)
-            {
-                long since=System.currentTimeMillis()-mStartTime;
-                if(since>32000)
+            while (mIsRunning) {
+                long since = System.currentTimeMillis() - mStartTime;
+                if (since > 32000)
                 {
-
+                    timeAvailable=false;
                     stop();
+                    ((FourCrossFour)mContext).stopped();
                     break;
                 }
-                //since=(17000-since);
-                long seconds=(int) since/x;
-                long milliseconds=(int) (since)%x;
 
-                ((FourCrossFour)mContext).updateTimerText(String.format("%02d:%03d",seconds,milliseconds));
+                long seconds = (int) since / x;
+                long milliseconds = (int) (since) % x;
+
+                ((FourCrossFour) mContext).updateTimerText(String.format("%02d:%03d", seconds, milliseconds));
             }
+            mIsRunning = false;
         }
     }
 }
