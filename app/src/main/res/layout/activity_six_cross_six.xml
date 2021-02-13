@@ -6,7 +6,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#000000"
-    tools:context=".SixCrossSix">
+    >
 
     <TextView
         android:id="@+id/six_cross_six_top_text"
@@ -372,8 +372,9 @@
         android:layout_height="40dp"
         android:layout_marginTop="25dp"
         android:layout_marginBottom="50dp"
-        android:background="#FFFFFF"
+        android:background="@drawable/custom_buttons"
         android:text="START"
+        android:textColor="#FFFFFF"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.498"

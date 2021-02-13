@@ -6,7 +6,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#000000"
-    tools:context=".FourCrossFour">
+    >
 
     <TextView
         android:id="@+id/four_cross_four_top_text"
@@ -235,14 +235,14 @@
     <Button
         android:id="@+id/start_timer"
         android:layout_width="100dp"
-        android:layout_height="50dp"
+        android:layout_height="40dp"
         android:layout_marginTop="10dp"
         android:layout_marginBottom="27dp"
-        android:background="#ffffff"
-        android:text="Start Timer"
+        android:background="@drawable/custom_buttons"
+        android:text="Start"
+        android:textColor="#FFFFFF"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/four_cross_four_bottom_text">
-    </Button>
+        app:layout_constraintTop_toBottomOf="@+id/four_cross_four_bottom_text"></Button>
 </androidx.constraintlayout.widget.ConstraintLayout>
