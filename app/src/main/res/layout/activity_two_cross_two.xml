@@ -6,7 +6,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#000000"
-    tools:context=".TwoCrossTwo">
+    >
 
     <TextView
         android:id="@+id/two_cross_two_top_text"
@@ -115,12 +115,13 @@
         android:layout_height="40dp"
         android:layout_marginTop="79dp"
         android:layout_marginBottom="107dp"
-        android:background="#FFFFFF"
+        android:background="@drawable/custom_buttons"
         android:text="Start"
-        android:textColor="#000000"
+        android:textColor="#FFFFFF"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/two_cross_two_bottom_text"></Button>
+        app:layout_constraintTop_toBottomOf="@+id/two_cross_two_bottom_text">
+    </Button>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
