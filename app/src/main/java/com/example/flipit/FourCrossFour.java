@@ -7,8 +7,10 @@ import android.animation.Animator;
 import android.animation.AnimatorListenerAdapter;
 import android.animation.ObjectAnimator;
 import android.annotation.SuppressLint;
+import android.app.Dialog;
 import android.content.Context;
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
 import android.util.Log;
@@ -435,11 +437,65 @@ public class FourCrossFour extends AppCompatActivity {
                         {
                             if(mChronometer.mIsRunning)
                             {
+                                total=0;
+                                co=0;
                                 mChronometer.stop();
                                 mThreadChrono.interrupt();
-                                Toast.makeText(getApplicationContext(), "Level Completed in " + text_top.getText().toString(), Toast.LENGTH_SHORT).show();
-                            }
+                                mChronometer=null;
 
+                                final Dialog d=new Dialog(FourCrossFour.this);
+                                d.setContentView(R.layout.level_completed_yes);
+
+                                d.setCancelable(false);
+                                Button play_again=(Button) d.findViewById(R.id.play_again);
+                                Button next_level=(Button) d.findViewById(R.id.next_level);
+                                Button last_level=(Button) d.findViewById(R.id.last_level);
+                                last_level.setText("Last Level");
+
+                                last_level.setOnClickListener(new View.OnClickListener() {
+                                    @Override
+                                    public void onClick(View v) {
+                                        Intent i=new Intent(getApplicationContext(),TwoCrossTwo.class);
+                                        startActivity(i);
+                                        finish();
+                                    }
+                                });
+
+                                d.show();
+                                play_again.setOnClickListener(new View.OnClickListener() {
+                                    @Override
+                                    public void onClick(View v) {
+                                        previousFlipped = null;
+                                        currentFlipped = null;
+                                        previousInt = 0;
+                                        currentInt = 0;
+
+                                        newCardsFlipped = 0;
+                                        total = 0;
+                                        co = 0;
+
+                                        animateBack(row1iv1, !true);animateBack(row1iv2, !true);animateBack(row1iv3, !true);animateBack(row1iv4, !true);
+                                        animateBack(row2iv1, !true);animateBack(row2iv2, !true);animateBack(row2iv3, !true);animateBack(row2iv4, !true);
+                                        animateBack(row3iv1, !true);animateBack(row3iv2, !true);animateBack(row3iv3, !true);animateBack(row3iv4, !true);
+                                        animateBack(row4iv1, !true);animateBack(row4iv2, !true);animateBack(row4iv3, !true);animateBack(row4iv4, !true);
+
+
+                                        start_timer.setEnabled(true);
+                                        d.dismiss();
+                                    }
+                                });
+
+                                next_level.setOnClickListener(new View.OnClickListener() {
+                                    @Override
+                                    public void onClick(View v) {
+                                        Intent i=new Intent(getApplicationContext(),SixCrossSix.class);
+                                        startActivity(i);
+                                        finish();
+                                    }
+                                });
+
+
+                            }
                         }
                     }
                 }

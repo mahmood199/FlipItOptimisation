@@ -294,6 +294,7 @@ public class TwoCrossTwo extends AppCompatActivity {
                                     public void onClick(View v) {
                                         Intent i=new Intent(TwoCrossTwo.this,Menu.class);
                                         startActivity(i);
+                                        finish();
                                     }
                                 });
 
@@ -325,6 +326,7 @@ public class TwoCrossTwo extends AppCompatActivity {
                                     public void onClick(View v) {
                                         Intent i=new Intent(getApplicationContext(),FourCrossFour.class);
                                         startActivity(i);
+                                        finish();
                                     }
                                 });
 
