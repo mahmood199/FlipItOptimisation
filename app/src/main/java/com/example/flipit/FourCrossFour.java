@@ -523,24 +523,16 @@ public class FourCrossFour extends AppCompatActivity {
 
 
     public void onBackPressed() {
-
         final Dialog d=new Dialog(FourCrossFour.this);
         d.setContentView(R.layout.back_pressed);
-
         d.show();
-
         Button YES= (Button) d.findViewById(R.id.yes);
         Button NO=  (Button) d.findViewById(R.id.no);
-
-
-
         YES.setOnClickListener(new View.OnClickListener() {
-            @Override
             public void onClick(View v) {
                 FourCrossFour.super.onBackPressed();
             }
         });
-
         NO.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -565,33 +557,42 @@ public class FourCrossFour extends AppCompatActivity {
             @Override
             public void run() {
 
-                AlertDialog.Builder adb=new AlertDialog.Builder(FourCrossFour.this);
-                adb.setCancelable(false);
-                adb.setTitle("You ran out of time");
-
-                row1iv1.setEnabled(false);      row1iv2.setEnabled(false);      row1iv3.setEnabled(false);      row1iv4.setEnabled(false);
-                row2iv1.setEnabled(false);      row2iv2.setEnabled(false);      row2iv3.setEnabled(false);      row2iv4.setEnabled(false);
-                row3iv1.setEnabled(false);      row3iv2.setEnabled(false);      row3iv3.setEnabled(false);      row3iv4.setEnabled(false);
-                row4iv1.setEnabled(false);      row4iv2.setEnabled(false);      row4iv3.setEnabled(false);      row4iv4.setEnabled(false);
-
-                mChronometer=null;
-                mThreadChrono.interrupt();
-                total=0;
-                co=0;
-
-                adb.setPositiveButton("Retry this level", new DialogInterface.OnClickListener() {
+                final Dialog d=new Dialog(FourCrossFour.this);
+                d.setContentView(R.layout.retry);
+                d.show();
+                d.setCancelable(false);
+                Button YES= (Button) d.findViewById(R.id.menu);
+                Button NO=  (Button) d.findViewById(R.id.retry_this_level);
+                YES.setOnClickListener(new View.OnClickListener() {
+                    public void onClick(View v) { FourCrossFour.super.onBackPressed(); }});
+                NO.setOnClickListener(new View.OnClickListener() {
                     @Override
-                    public void onClick(DialogInterface dialog, int which) {
+                    public void onClick(View v) {
+
                         animateBack(row1iv1,false);     animateBack(row1iv2,false);     animateBack(row1iv3,false);     animateBack(row1iv4,false);
                         animateBack(row2iv1,false);     animateBack(row2iv2,false);     animateBack(row2iv3,false);     animateBack(row2iv4,false);
                         animateBack(row3iv1,false);     animateBack(row3iv2,false);     animateBack(row3iv3,false);     animateBack(row3iv4,false);
                         animateBack(row4iv1,false);     animateBack(row4iv2,false);     animateBack(row4iv3,false);     animateBack(row4iv4,false);
 
+                        text_top.setText("00:000");
+                        previousFlipped=null;
+                        currentFlipped=null;
+                        previousInt=0;
+                        currentInt=0;
                         text_below.setText("Number of times button pressed=0");
+                        newCardsFlipped=0;
+                        mChronometer=null;
+                        mThreadChrono.interrupt();
+                        total=0;
+                        co=0;
+                        d.dismiss();
                     }
                 });
-                adb.show();
 
+                mChronometer=null;
+                mThreadChrono.interrupt();
+                total=0;
+                co=0;
             }
         });
     }

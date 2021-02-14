@@ -359,23 +359,13 @@ public class TwoCrossTwo extends AppCompatActivity {
 
     @Override
     public void onBackPressed() {
-
         final Dialog d=new Dialog(TwoCrossTwo.this);
         d.setContentView(R.layout.back_pressed);
-
         d.show();
-
         Button YES= (Button) d.findViewById(R.id.yes);
         Button NO=  (Button) d.findViewById(R.id.no);
-
         YES.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                TwoCrossTwo.super.onBackPressed();
-                finish();
-            }
-        });
-
+            public void onClick(View v) { TwoCrossTwo.super.onBackPressed(); }});
         NO.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -399,26 +389,37 @@ public class TwoCrossTwo extends AppCompatActivity {
         runOnUiThread(new Runnable() {
             @Override
             public void run() {
-                AlertDialog.Builder adb=new AlertDialog.Builder(TwoCrossTwo.this);
-                adb.setCancelable(false);
-                adb.setTitle("You ran out of time");
 
-                row1iv1.setEnabled(false);      row1iv2.setEnabled(false);      row2iv1.setEnabled(false);      row2iv2.setEnabled(false);
-
-                mChronometer=null;
-                mThreadChrono.interrupt();
-                total=0;
-                co=0;
-
-                adb.setPositiveButton("Retry this level", new DialogInterface.OnClickListener() {
+                final Dialog d=new Dialog(TwoCrossTwo.this);
+                d.setContentView(R.layout.retry);
+                d.show();
+                d.setCancelable(false);
+                Button YES= (Button) d.findViewById(R.id.menu);
+                Button NO=  (Button) d.findViewById(R.id.retry_this_level);
+                YES.setOnClickListener(new View.OnClickListener() {
+                    public void onClick(View v) { TwoCrossTwo.super.onBackPressed(); }});
+                NO.setOnClickListener(new View.OnClickListener() {
                     @Override
-                    public void onClick(DialogInterface dialog, int which) {
-                        animateBack(row1iv1,false);     animateBack(row1iv2,false);     animateBack(row2iv1,false);     animateBack(row2iv2,false);
+                    public void onClick(View v) {
+                        animateBack(row1iv1,false);     animateBack(row1iv2,false);
+                        animateBack(row2iv1,false);     animateBack(row2iv2,false);
 
+                        timer.setText("00:000");
+                        previousFlipped=null;
+                        currentFlipped=null;
+                        previousInt=0;
+                        currentInt=0;
                         text_below.setText("Number of times button pressed=0");
+                        newCardsFlipped=0;
+                        mChronometer=null;
+                        mThreadChrono.interrupt();
+                        total=0;
+                        co=0;
+                        d.dismiss();
                     }
                 });
-                adb.show();
+
+
             }
         });
     }
