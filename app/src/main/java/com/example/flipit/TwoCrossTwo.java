@@ -56,6 +56,8 @@ public class TwoCrossTwo extends AppCompatActivity {
         setContentView(R.layout.activity_two_cross_two);
 
         timer=(TextView) findViewById(R.id.two_cross_two_top_text);
+        timer.setText("00:000");
+
         text_below=(TextView) findViewById(R.id.two_cross_two_bottom_text);
         start=(Button) findViewById(R.id.start);
         mContext=this;
@@ -117,6 +119,7 @@ public class TwoCrossTwo extends AppCompatActivity {
             public void onClick(View v)  {
 
                 if(mChronometer==null) {
+
                     previousFlipped = null;
                     currentFlipped = null;
                     previousInt = 0;
@@ -303,6 +306,7 @@ public class TwoCrossTwo extends AppCompatActivity {
                                     @Override
                                     public void onClick(View v) {
                                         previousFlipped = null;
+                                        timer.setText("00:000");
                                         currentFlipped = null;
                                         previousInt = 0;
                                         currentInt = 0;
