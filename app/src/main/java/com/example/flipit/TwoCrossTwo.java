@@ -9,6 +9,7 @@ import android.animation.AnimatorSet;
 import android.animation.ObjectAnimator;
 import android.animation.AnimatorListenerAdapter;
 import android.animation.ObjectAnimator;
+import android.app.Dialog;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
@@ -259,7 +260,6 @@ public class TwoCrossTwo extends AppCompatActivity {
                             @Override
                             public void onAnimationEnd(Animator animation) {
                                 super.onAnimationEnd(animation);
-
                                 previousFlipped.setText("FRONT");
                                 anime44.start();
                             }
@@ -278,7 +278,59 @@ public class TwoCrossTwo extends AppCompatActivity {
                                 co=0;
                                 mChronometer.stop();
                                 mThreadChrono.interrupt();
+                                mChronometer=null;
+
+                                final Dialog d=new Dialog(TwoCrossTwo.this);
+                                d.setContentView(R.layout.level_completed_yes);
+
+                                d.setCancelable(false);
+                                Button play_again=(Button) d.findViewById(R.id.play_again);
+                                Button next_level=(Button) d.findViewById(R.id.next_level);
+                                Button last_level=(Button) d.findViewById(R.id.last_level);
+                                last_level.setText("Back to menu");
+
+                                last_level.setOnClickListener(new View.OnClickListener() {
+                                    @Override
+                                    public void onClick(View v) {
+                                        Intent i=new Intent(TwoCrossTwo.this,Menu.class);
+                                        startActivity(i);
+                                    }
+                                });
+
+                                d.show();
+                                play_again.setOnClickListener(new View.OnClickListener() {
+                                    @Override
+                                    public void onClick(View v) {
+                                        previousFlipped = null;
+                                        currentFlipped = null;
+                                        previousInt = 0;
+                                        currentInt = 0;
+
+                                        newCardsFlipped = 0;
+                                        total = 0;
+                                        co = 0;
+
+                                        animateBack(row1iv1, !true);
+                                        animateBack(row1iv2, !true);
+                                        animateBack(row2iv1, !true);
+                                        animateBack(row2iv2, !true);
+
+                                        start.setEnabled(true);
+                                        d.dismiss();
+                                    }
+                                });
+
+                                next_level.setOnClickListener(new View.OnClickListener() {
+                                    @Override
+                                    public void onClick(View v) {
+                                        Intent i=new Intent(getApplicationContext(),FourCrossFour.class);
+                                        startActivity(i);
+                                    }
+                                });
+
+
                             }
+
                         }
                     }
                 }
