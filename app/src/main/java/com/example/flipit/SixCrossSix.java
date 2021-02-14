@@ -735,33 +735,29 @@ public class SixCrossSix extends AppCompatActivity {
 
     public void onBackPressed(){
 
-        final AlertDialog.Builder options= new AlertDialog.Builder(SixCrossSix.this);
-        options.setTitle("Warning");
-        options.setMessage("If you leave this level,you will lose your progress");
+        final Dialog d=new Dialog(SixCrossSix.this);
+        d.setContentView(R.layout.back_pressed);
+
+        d.show();
+
+        Button YES= (Button) d.findViewById(R.id.yes);
+        Button NO=  (Button) d.findViewById(R.id.no);
 
 
-        options.setPositiveButton("Leave", new DialogInterface.OnClickListener() {
+
+        YES.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(DialogInterface dialog, int which) {
-
-                if(mChronometer!=null) {
-                    mThreadChrono.interrupt();
-                    mChronometer.stop();
-                }
-
+            public void onClick(View v) {
                 SixCrossSix.super.onBackPressed();
-                return;
             }
         });
 
-        options.setNegativeButton("Stay", new DialogInterface.OnClickListener() {
+        NO.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(DialogInterface dialog, int which) {
-                options.setCancelable(true);
+            public void onClick(View v) {
+                d.dismiss();
             }
         });
-
-        options.show();
     }
 
     public void updateTimerText(final String time) {

@@ -360,35 +360,28 @@ public class TwoCrossTwo extends AppCompatActivity {
     @Override
     public void onBackPressed() {
 
+        final Dialog d=new Dialog(TwoCrossTwo.this);
+        d.setContentView(R.layout.back_pressed);
 
-        final AlertDialog.Builder options= new AlertDialog.Builder(TwoCrossTwo.this);
-        options.setTitle("Warning");
-        options.setMessage("If you leave this level,you will lose your progress");
+        d.show();
 
+        Button YES= (Button) d.findViewById(R.id.yes);
+        Button NO=  (Button) d.findViewById(R.id.no);
 
-        options.setPositiveButton("Leave", new DialogInterface.OnClickListener() {
+        YES.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(DialogInterface dialog, int which) {
-
-                if(mChronometer!=null) {
-                    mThreadChrono.interrupt();
-                    mChronometer.stop();
-                }
-
+            public void onClick(View v) {
                 TwoCrossTwo.super.onBackPressed();
-                return;
+                finish();
             }
         });
 
-        options.setNegativeButton("Stay", new DialogInterface.OnClickListener() {
+        NO.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(DialogInterface dialog, int which) {
-                options.setCancelable(true);
+            public void onClick(View v) {
+                d.dismiss();
             }
         });
-
-        options.show();
-
     }
 
 
