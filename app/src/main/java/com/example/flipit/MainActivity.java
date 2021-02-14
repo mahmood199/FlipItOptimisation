@@ -25,8 +25,9 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         iv1=(ImageView) findViewById(R.id.splash_screen_logo_1);
+        btn1=(Button) findViewById(R.id.splash_screen_button_1);
 
-        iv1.setOnClickListener(new View.OnClickListener() {
+        btn1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent i= new Intent(getApplicationContext(),Menu.class);
@@ -45,7 +46,7 @@ public class MainActivity extends AppCompatActivity {
         }
         else
         {
-            backToast= Toast.makeText(getBaseContext(),"Press again to leave level",Toast.LENGTH_SHORT);
+            backToast= Toast.makeText(getBaseContext(),"Press again to leave the game",Toast.LENGTH_SHORT);
             backToast.show();
         }
         BackPressedTime=System.currentTimeMillis();

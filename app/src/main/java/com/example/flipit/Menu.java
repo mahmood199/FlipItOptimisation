@@ -77,12 +77,13 @@ public class Menu extends AppCompatActivity {
         });
 
 
-        feedback.setOnClickListener(new View.OnClickListener() {
+        /*feedback.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 startActivity(new Intent(Menu.this,CardFlip.class));
             }
         });
+        */
 
     }
 
