@@ -60,6 +60,7 @@ public class SixCrossSix extends AppCompatActivity {
         
         mContext=this;
         text_top=(TextView) findViewById(R.id.six_cross_six_top_text);
+        text_top.setText("00:000");
         text_below=(TextView) findViewById(R.id.six_cross_six_bottom_text);
         start_button=(Button) findViewById(R.id.start_button);
 
@@ -475,6 +476,14 @@ public class SixCrossSix extends AppCompatActivity {
             }
         });
 
+        r1iv1.setEnabled(false);      r1iv2.setEnabled(!false);      r1iv3.setEnabled(false);      r1iv4.setEnabled(false);      r1iv5.setEnabled(false);        r1iv6.setEnabled(false);
+        r2iv1.setEnabled(false);      r2iv2.setEnabled(false);      r2iv3.setEnabled(false);      r2iv4.setEnabled(false);      r2iv5.setEnabled(false);        r2iv6.setEnabled(false);
+        r3iv1.setEnabled(false);      r3iv2.setEnabled(false);      r3iv3.setEnabled(false);      r3iv4.setEnabled(false);      r3iv5.setEnabled(false);        r3iv6.setEnabled(false);
+        r4iv1.setEnabled(false);      r4iv2.setEnabled(false);      r4iv3.setEnabled(false);      r4iv4.setEnabled(false);      r4iv5.setEnabled(false);        r4iv6.setEnabled(false);
+        r5iv1.setEnabled(false);      r5iv2.setEnabled(false);      r5iv3.setEnabled(false);      r5iv4.setEnabled(false);      r5iv5.setEnabled(false);        r5iv6.setEnabled(false);
+        r6iv1.setEnabled(false);      r6iv2.setEnabled(false);      r6iv3.setEnabled(false);      r6iv4.setEnabled(false);      r6iv5.setEnabled(false);        r6iv6.setEnabled(false);
+
+
 
 
 
@@ -483,6 +492,7 @@ public class SixCrossSix extends AppCompatActivity {
             public void onClick(View v) {
 
                 if(mChronometer == null) {
+                    text_top.setText("00:000");
                     previousFlipped = null;
                     currentFlipped = null;
                     previousInt = 0;
@@ -676,6 +686,9 @@ public class SixCrossSix extends AppCompatActivity {
                                     public void onClick(View v) {
                                         previousFlipped = null;
                                         currentFlipped = null;
+                                        text_top.setText("00:000");
+
+                                        mChronometer=null;
                                         previousInt = 0;
                                         currentInt = 0;
 

@@ -61,6 +61,7 @@ public class FourCrossFour extends AppCompatActivity {
         text_below=(TextView) findViewById(R.id.four_cross_four_bottom_text);
         start_timer=(Button) findViewById(R.id.start_timer);
         text_top=(TextView) findViewById(R.id.four_cross_four_top_text);
+        text_top.setText("00:000");
         mContext=this;
 
 
@@ -277,6 +278,7 @@ public class FourCrossFour extends AppCompatActivity {
             public void onClick(View v) {
 
                 if(mChronometer == null) {
+                    text_top.setText("00:000");
                     previousFlipped = null;
                     currentFlipped = null;
                     previousInt = 0;
@@ -466,6 +468,8 @@ public class FourCrossFour extends AppCompatActivity {
                                     @Override
                                     public void onClick(View v) {
                                         previousFlipped = null;
+                                        text_top.setText("00:000");
+
                                         currentFlipped = null;
                                         previousInt = 0;
                                         currentInt = 0;
