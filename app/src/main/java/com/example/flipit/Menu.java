@@ -1,5 +1,6 @@
 package com.example.flipit;
 
+import android.app.Dialog;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
@@ -41,38 +42,39 @@ public class Menu extends AppCompatActivity {
         play.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                showLevels();
-            }
+                final Dialog d=new Dialog(Menu.this);
+                d.setContentView(R.layout.levels);
 
-            private void showLevels() {
-                final String[] levels ={"2x2   Beginner","4x4   Intermediate","6x6   Advance"};
+                d.setCancelable(true);
+                Button four_cross_four=(Button) d.findViewById(R.id.four_cross_four);
+                Button six_cross_six=(Button) d.findViewById(R.id.six_cross_six);
+                Button two_cross_two=(Button) d.findViewById(R.id.two_cross_two);
 
-                AlertDialog.Builder options= new AlertDialog.Builder(Menu.this);
-                options.setTitle("Choose a level");
-                options.setSingleChoiceItems(levels, 0, new DialogInterface.OnClickListener() {
+                d.show();
+                two_cross_two.setOnClickListener(new View.OnClickListener() {
                     @Override
-                    public void onClick(DialogInterface dialog, int which) {
-                        level = levels[which];
-
-                        if(which==0)
-                        {
-                            Intent i=new Intent(Menu.this,TwoCrossTwo.class);
-                            startActivity(i);
-                        }
-                        else if(which==1)
-                        {
-                            Intent i=new Intent(Menu.this,FourCrossFour.class);
-                            startActivity(i);
-                        }
-                        else if(which==2)
-                        {
-                            Intent i=new Intent(Menu.this,SixCrossSix.class);
-                            startActivity(i);
-                        }
-
+                    public void onClick(View v) {
+                        Intent i=new Intent(getApplicationContext(),TwoCrossTwo.class);
+                        startActivity(i);
                     }
                 });
-                options.show();
+
+                four_cross_four.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        Intent i=new Intent(getApplicationContext(),FourCrossFour.class);
+                        startActivity(i);
+                    }
+                });
+
+                six_cross_six.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        Intent i=new Intent(getApplicationContext(),SixCrossSix.class);
+                        startActivity(i);
+                    }
+                });
+
             }
         });
 
