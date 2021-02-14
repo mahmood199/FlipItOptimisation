@@ -734,24 +734,17 @@ public class SixCrossSix extends AppCompatActivity {
 
 
     public void onBackPressed(){
-
         final Dialog d=new Dialog(SixCrossSix.this);
         d.setContentView(R.layout.back_pressed);
-
         d.show();
-
         Button YES= (Button) d.findViewById(R.id.yes);
         Button NO=  (Button) d.findViewById(R.id.no);
-
-
-
         YES.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 SixCrossSix.super.onBackPressed();
             }
         });
-
         NO.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -775,25 +768,17 @@ public class SixCrossSix extends AppCompatActivity {
             @Override
             public void run() {
 
-                AlertDialog.Builder adb=new AlertDialog.Builder(SixCrossSix.this);
-                adb.setCancelable(false);
-                adb.setTitle("You ran out of time");
-
-                r1iv1.setEnabled(false);      r1iv2.setEnabled(false);      r1iv3.setEnabled(false);      r1iv4.setEnabled(false);      r1iv5.setEnabled(false);        r1iv6.setEnabled(false);
-                r2iv1.setEnabled(false);      r2iv2.setEnabled(false);      r2iv3.setEnabled(false);      r2iv4.setEnabled(false);      r2iv5.setEnabled(false);        r2iv6.setEnabled(false);
-                r3iv1.setEnabled(false);      r3iv2.setEnabled(false);      r3iv3.setEnabled(false);      r3iv4.setEnabled(false);      r3iv5.setEnabled(false);        r3iv6.setEnabled(false);
-                r4iv1.setEnabled(false);      r4iv2.setEnabled(false);      r4iv3.setEnabled(false);      r4iv4.setEnabled(false);      r4iv5.setEnabled(false);        r4iv6.setEnabled(false);
-                r5iv1.setEnabled(false);      r5iv2.setEnabled(false);      r5iv3.setEnabled(false);      r5iv4.setEnabled(false);      r5iv5.setEnabled(false);        r5iv6.setEnabled(false);
-                r6iv1.setEnabled(false);      r6iv2.setEnabled(false);      r6iv3.setEnabled(false);      r6iv4.setEnabled(false);      r6iv5.setEnabled(false);        r6iv6.setEnabled(false);
-
-                mChronometer=null;
-                mThreadChrono.interrupt();
-                total=0;
-                co=0;
-
-                adb.setPositiveButton("Retry Level", new DialogInterface.OnClickListener() {
+                final Dialog d=new Dialog(SixCrossSix.this);
+                d.setContentView(R.layout.retry);
+                d.show();
+                d.setCancelable(false);
+                Button YES= (Button) d.findViewById(R.id.menu);
+                Button NO=  (Button) d.findViewById(R.id.retry_this_level);
+                YES.setOnClickListener(new View.OnClickListener() {
+                    public void onClick(View v) { SixCrossSix.super.onBackPressed(); }});
+                NO.setOnClickListener(new View.OnClickListener() {
                     @Override
-                    public void onClick(DialogInterface dialog, int which) {
+                    public void onClick(View v) {
 
                         animateBack(r1iv1,false);     animateBack(r1iv2,false);     animateBack(r1iv3,false);     animateBack(r1iv4,false);     animateBack(r1iv5,false);     animateBack(r1iv6,false);
                         animateBack(r2iv1,false);     animateBack(r2iv2,false);     animateBack(r2iv3,false);     animateBack(r2iv4,false);     animateBack(r2iv5,false);     animateBack(r2iv6,false);
@@ -802,11 +787,21 @@ public class SixCrossSix extends AppCompatActivity {
                         animateBack(r5iv1,false);     animateBack(r5iv2,false);     animateBack(r5iv3,false);     animateBack(r5iv4,false);     animateBack(r5iv5,false);     animateBack(r5iv6,false);
                         animateBack(r6iv1,false);     animateBack(r6iv2,false);     animateBack(r6iv3,false);     animateBack(r6iv4,false);     animateBack(r6iv5,false);     animateBack(r6iv6,false);
 
+                        text_top.setText("00:000");
+                        previousFlipped=null;
+                        currentFlipped=null;
+                        previousInt=0;
                         text_below.setText("Number of times button pressed=0");
-
+                        currentInt=0;
+                        newCardsFlipped=0;
+                        mChronometer=null;
+                        mThreadChrono.interrupt();
+                        total=0;
+                        co=0;
+                        d.dismiss();
                     }
                 });
-                adb.show();
+
             }
         });
     }
