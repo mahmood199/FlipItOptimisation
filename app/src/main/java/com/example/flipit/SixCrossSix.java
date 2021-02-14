@@ -6,8 +6,10 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.animation.Animator;
 import android.animation.AnimatorListenerAdapter;
 import android.animation.ObjectAnimator;
+import android.app.Dialog;
 import android.content.Context;
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
 import android.view.View;
@@ -643,9 +645,59 @@ public class SixCrossSix extends AppCompatActivity {
                         {
                             if (mChronometer.mIsRunning)
                             {
+                                total=0;
+                                co=0;
                                 mChronometer.stop();
                                 mThreadChrono.interrupt();
-                                Toast.makeText(getApplicationContext(), "Level Completed in " + text_top.getText().toString(), Toast.LENGTH_SHORT).show();
+                                mChronometer=null;
+
+                                final Dialog d=new Dialog(SixCrossSix.this);
+                                d.setContentView(R.layout.level_completed_yes);
+
+                                d.setCancelable(false);
+                                Button play_again=(Button) d.findViewById(R.id.play_again);
+                                Button next_level=(Button) d.findViewById(R.id.next_level);
+                                Button last_level=(Button) d.findViewById(R.id.last_level);
+                                last_level.setText("last level");
+                                next_level.setText("soon...");
+
+                                last_level.setOnClickListener(new View.OnClickListener() {
+                                    @Override
+                                    public void onClick(View v) {
+                                        Intent i=new Intent(getApplicationContext(),FourCrossFour.class);
+                                        startActivity(i);
+                                        finish();
+                                    }
+                                });
+
+                                d.show();
+                                play_again.setOnClickListener(new View.OnClickListener() {
+                                    @Override
+                                    public void onClick(View v) {
+                                        previousFlipped = null;
+                                        currentFlipped = null;
+                                        previousInt = 0;
+                                        currentInt = 0;
+
+                                        newCardsFlipped = 0;
+                                        total = 0;
+                                        co = 0;
+
+                                        animateBack(r1iv1, !true);animateBack(r1iv2, !true);animateBack(r1iv3, !true);animateBack(r1iv4, !true);animateBack(r1iv5, !true);animateBack(r1iv6, !true);
+                                        animateBack(r2iv1, !true);animateBack(r2iv2, !true);animateBack(r2iv3, !true);animateBack(r2iv4, !true);animateBack(r2iv5, !true);animateBack(r2iv6, !true);
+                                        animateBack(r3iv1, !true);animateBack(r3iv2, !true);animateBack(r3iv3, !true);animateBack(r3iv4, !true);animateBack(r3iv5, !true);animateBack(r3iv6, !true);
+                                        animateBack(r4iv1, !true);animateBack(r4iv2, !true);animateBack(r4iv3, !true);animateBack(r4iv4, !true);animateBack(r4iv5, !true);animateBack(r4iv6, !true);
+                                        animateBack(r5iv1, !true);animateBack(r5iv2, !true);animateBack(r5iv3, !true);animateBack(r5iv4, !true);animateBack(r5iv5, !true);animateBack(r5iv6, !true);
+                                        animateBack(r6iv1, !true);animateBack(r6iv2, !true);animateBack(r6iv3, !true);animateBack(r6iv4, !true);animateBack(r6iv5, !true);animateBack(r6iv6, !true);
+
+                                        start_button.setEnabled(true);
+                                        d.dismiss();
+                                    }
+                                });
+
+
+
+
                             }
                         }
                     }
