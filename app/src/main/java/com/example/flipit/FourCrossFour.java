@@ -266,11 +266,8 @@ public class FourCrossFour extends AppCompatActivity {
             }
         });
 
-        row1iv1.setEnabled(false);      row1iv2.setEnabled(false);      row1iv3.setEnabled(false);      row1iv4.setEnabled(false);
-        row2iv1.setEnabled(false);      row2iv2.setEnabled(false);      row2iv3.setEnabled(false);      row2iv4.setEnabled(false);
-        row3iv1.setEnabled(false);      row3iv2.setEnabled(false);      row3iv3.setEnabled(false);      row3iv4.setEnabled(false);
-        row4iv1.setEnabled(false);      row4iv2.setEnabled(false);      row4iv3.setEnabled(false);      row4iv4.setEnabled(false);
 
+        enableAll(false);
 
 
         start_timer.setOnClickListener(new View.OnClickListener() {
@@ -278,31 +275,20 @@ public class FourCrossFour extends AppCompatActivity {
             public void onClick(View v) {
 
                 if(mChronometer == null) {
-                    text_top.setText("00:000");
-                    previousFlipped = null;
-                    currentFlipped = null;
-                    previousInt = 0;
-                    currentInt = 0;
-
-                    newCardsFlipped = 0;
-                    total = 0;
-                    co = 0;
-
 
                     int i, j, n = 16, temp;
-                    Random rand = new Random();
                     for (i = n - 1 ; i > 0 ; i--)      //Fisher Yates Algorithm
                     {
+                        Random rand = new Random();
                         j=rand.nextInt(i);
                         temp=a[j];
                         a[j]=a[i];
                         a[i]=temp;
                     }
 
-                    animateBack(row1iv1,true);      animateBack(row1iv2,true);      animateBack(row1iv3,true);      animateBack(row1iv4,true);
-                    animateBack(row2iv1,true);      animateBack(row2iv2,true);      animateBack(row2iv3,true);      animateBack(row2iv4,true);
-                    animateBack(row3iv1,true);      animateBack(row3iv2,true);      animateBack(row3iv3,true);      animateBack(row3iv4,true);
-                    animateBack(row4iv1,true);      animateBack(row4iv2,true);      animateBack(row4iv3,true);      animateBack(row4iv4,true);
+                    resetAllValues();
+                    animateBackAll(true);
+                    enableAll(true);
 
                     mChronometer = new Chronometer(mContext);
                     mThreadChrono = new Thread(mChronometer);
@@ -312,7 +298,6 @@ public class FourCrossFour extends AppCompatActivity {
             }
         });
     }
-
 
     void flip(Button Btn,int num)
     {
@@ -330,7 +315,6 @@ public class FourCrossFour extends AppCompatActivity {
             anime2.setInterpolator(new AccelerateInterpolator());
             anime2.setDuration(100);
 
-            isAnimationRunning=true;
             anime1.start();
 
             anime1.addListener(new AnimatorListenerAdapter() {
@@ -344,8 +328,7 @@ public class FourCrossFour extends AppCompatActivity {
                 }
             });
             newCardsFlipped++;
-            //Toast.makeText(getApplicationContext(),Integer.toString(previousInt),Toast.LENGTH_SHORT).show();
-            isAnimationRunning=false;
+
         }
 
         else if(newCardsFlipped==1)
@@ -362,7 +345,6 @@ public class FourCrossFour extends AppCompatActivity {
             anime2.setInterpolator(new AccelerateInterpolator());
             anime2.setDuration(100);
 
-            isAnimationRunning=true;
             anime1.start();
 
             anime1.addListener(new AnimatorListenerAdapter() {
@@ -375,7 +357,6 @@ public class FourCrossFour extends AppCompatActivity {
                     anime2.start();
                 }
             });
-            //Toast.makeText(getApplicationContext(), Integer.toString(currentInt), Toast.LENGTH_SHORT).show();
 
             newCardsFlipped++;
 
@@ -387,7 +368,6 @@ public class FourCrossFour extends AppCompatActivity {
                 public void run() {
                     if(currentInt!=previousInt)
                     {
-                        //Toast.makeText(getApplicationContext(),"Not equal",Toast.LENGTH_SHORT).show();
                         final ObjectAnimator anime11=ObjectAnimator.ofFloat(currentFlipped,"scaleX",1f,0f);
                         final ObjectAnimator anime22=ObjectAnimator.ofFloat(currentFlipped,"scaleX",0f,1f);
 
@@ -429,6 +409,7 @@ public class FourCrossFour extends AppCompatActivity {
                                 anime44.start();
                             }
                         });
+                        newCardsFlipped=0;
                     }
                     else
                     {
@@ -439,8 +420,7 @@ public class FourCrossFour extends AppCompatActivity {
                         {
                             if(mChronometer.mIsRunning)
                             {
-                                total=0;
-                                co=0;
+                                resetAllValues();
                                 mChronometer.stop();
                                 mThreadChrono.interrupt();
                                 mChronometer=null;
@@ -457,7 +437,7 @@ public class FourCrossFour extends AppCompatActivity {
                                 last_level.setOnClickListener(new View.OnClickListener() {
                                     @Override
                                     public void onClick(View v) {
-                                        Intent i=new Intent(getApplicationContext(),TwoCrossTwo.class);
+                                        Intent i=new Intent(FourCrossFour.this,TwoCrossTwo.class);
                                         startActivity(i);
                                         finish();
                                     }
@@ -467,23 +447,8 @@ public class FourCrossFour extends AppCompatActivity {
                                 play_again.setOnClickListener(new View.OnClickListener() {
                                     @Override
                                     public void onClick(View v) {
-                                        previousFlipped = null;
-                                        text_top.setText("00:000");
-
-                                        currentFlipped = null;
-                                        previousInt = 0;
-                                        currentInt = 0;
-
-                                        newCardsFlipped = 0;
-                                        total = 0;
-                                        co = 0;
-
-                                        animateBack(row1iv1, !true);animateBack(row1iv2, !true);animateBack(row1iv3, !true);animateBack(row1iv4, !true);
-                                        animateBack(row2iv1, !true);animateBack(row2iv2, !true);animateBack(row2iv3, !true);animateBack(row2iv4, !true);
-                                        animateBack(row3iv1, !true);animateBack(row3iv2, !true);animateBack(row3iv3, !true);animateBack(row3iv4, !true);
-                                        animateBack(row4iv1, !true);animateBack(row4iv2, !true);animateBack(row4iv3, !true);animateBack(row4iv4, !true);
-
-
+                                        animateBackAll(false);
+                                        resetAllValues();
                                         start_timer.setEnabled(true);
                                         d.dismiss();
                                     }
@@ -498,7 +463,6 @@ public class FourCrossFour extends AppCompatActivity {
                                     }
                                 });
 
-
                             }
                         }
                     }
@@ -506,21 +470,48 @@ public class FourCrossFour extends AppCompatActivity {
             },350);
 
             newCardsFlipped=0;
-            isAnimationRunning=false;
         }
     }
 
+    void enableAll(boolean b)
+    {
+        row1iv1.setEnabled(b);      row1iv2.setEnabled(b);      row1iv3.setEnabled(b);      row1iv4.setEnabled(b);
+        row2iv1.setEnabled(b);      row2iv2.setEnabled(b);      row2iv3.setEnabled(b);      row2iv4.setEnabled(b);
+        row3iv1.setEnabled(b);      row3iv2.setEnabled(b);      row3iv3.setEnabled(b);      row3iv4.setEnabled(b);
+        row4iv1.setEnabled(b);      row4iv2.setEnabled(b);      row4iv3.setEnabled(b);      row4iv4.setEnabled(b);
+    }
+
+    void animateBackAll(boolean b)
+    {
+        animateBack(row1iv1, b);    animateBack(row1iv2, b);    animateBack(row1iv3, b);    animateBack(row1iv4, b);
+        animateBack(row2iv1, b);    animateBack(row2iv2, b);    animateBack(row2iv3, b);    animateBack(row2iv4, b);
+        animateBack(row3iv1, b);    animateBack(row3iv2, b);    animateBack(row3iv3, b);    animateBack(row3iv4, b);
+        animateBack(row4iv1, b);    animateBack(row4iv2, b);    animateBack(row4iv3, b);    animateBack(row4iv4, b);
+    }
+
+    void resetAllValues()
+    {
+        previousFlipped = null;
+        currentFlipped = null;
+        previousInt = 0;
+        currentInt = 0;
+
+        newCardsFlipped = 0;
+        total = 0;
+        co = 0;
+
+        text_below.setText("Press start to begin level");
+        text_top.setText("00:000");
+    }
 
     public void disappear(Button btn)
     {
         final ObjectAnimator animex=ObjectAnimator.ofFloat(btn,"alpha",1f,0f);
         animex.setInterpolator(new DecelerateInterpolator());
         animex.setDuration(100);
-
         animex.start();
         btn.setEnabled(false);
     }
-
 
     public void onBackPressed() {
         final Dialog d=new Dialog(FourCrossFour.this);
@@ -530,6 +521,12 @@ public class FourCrossFour extends AppCompatActivity {
         Button NO=  (Button) d.findViewById(R.id.no);
         YES.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
+                if(mChronometer!=null)
+                {
+                    mThreadChrono.interrupt();
+                    mChronometer.stop();
+                    mChronometer=null;
+                }
                 FourCrossFour.super.onBackPressed();
             }
         });
@@ -568,31 +565,15 @@ public class FourCrossFour extends AppCompatActivity {
                 NO.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
-
-                        animateBack(row1iv1,false);     animateBack(row1iv2,false);     animateBack(row1iv3,false);     animateBack(row1iv4,false);
-                        animateBack(row2iv1,false);     animateBack(row2iv2,false);     animateBack(row2iv3,false);     animateBack(row2iv4,false);
-                        animateBack(row3iv1,false);     animateBack(row3iv2,false);     animateBack(row3iv3,false);     animateBack(row3iv4,false);
-                        animateBack(row4iv1,false);     animateBack(row4iv2,false);     animateBack(row4iv3,false);     animateBack(row4iv4,false);
-
-                        text_top.setText("00:000");
-                        previousFlipped=null;
-                        currentFlipped=null;
-                        previousInt=0;
-                        currentInt=0;
-                        text_below.setText("Number of times button pressed=0");
-                        newCardsFlipped=0;
+                        animateBackAll(false);
+                        resetAllValues();
+                        mChronometer.stop();
                         mChronometer=null;
                         mThreadChrono.interrupt();
-                        total=0;
-                        co=0;
                         d.dismiss();
                     }
                 });
 
-                mChronometer=null;
-                mThreadChrono.interrupt();
-                total=0;
-                co=0;
             }
         });
     }
