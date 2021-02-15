@@ -476,15 +476,7 @@ public class SixCrossSix extends AppCompatActivity {
             }
         });
 
-        r1iv1.setEnabled(false);      r1iv2.setEnabled(!false);      r1iv3.setEnabled(false);      r1iv4.setEnabled(false);      r1iv5.setEnabled(false);        r1iv6.setEnabled(false);
-        r2iv1.setEnabled(false);      r2iv2.setEnabled(false);      r2iv3.setEnabled(false);      r2iv4.setEnabled(false);      r2iv5.setEnabled(false);        r2iv6.setEnabled(false);
-        r3iv1.setEnabled(false);      r3iv2.setEnabled(false);      r3iv3.setEnabled(false);      r3iv4.setEnabled(false);      r3iv5.setEnabled(false);        r3iv6.setEnabled(false);
-        r4iv1.setEnabled(false);      r4iv2.setEnabled(false);      r4iv3.setEnabled(false);      r4iv4.setEnabled(false);      r4iv5.setEnabled(false);        r4iv6.setEnabled(false);
-        r5iv1.setEnabled(false);      r5iv2.setEnabled(false);      r5iv3.setEnabled(false);      r5iv4.setEnabled(false);      r5iv5.setEnabled(false);        r5iv6.setEnabled(false);
-        r6iv1.setEnabled(false);      r6iv2.setEnabled(false);      r6iv3.setEnabled(false);      r6iv4.setEnabled(false);      r6iv5.setEnabled(false);        r6iv6.setEnabled(false);
-
-
-
+        enableAll(false);
 
 
         start_button.setOnClickListener(new View.OnClickListener() {
@@ -492,16 +484,6 @@ public class SixCrossSix extends AppCompatActivity {
             public void onClick(View v) {
 
                 if(mChronometer == null) {
-                    text_top.setText("00:000");
-                    previousFlipped = null;
-                    currentFlipped = null;
-                    previousInt = 0;
-                    currentInt = 0;
-
-                    newCardsFlipped = 0;
-                    total = 0;
-                    co = 0;
-
 
                     int i, j, n = 36, temp;
                     Random rand = new Random();
@@ -513,12 +495,10 @@ public class SixCrossSix extends AppCompatActivity {
                         a[i]=temp;
                     }
 
-                    r1iv1.setEnabled(true);      r1iv2.setEnabled(true);      r1iv3.setEnabled(true);      r1iv4.setEnabled(true);      r1iv5.setEnabled(true);        r1iv6.setEnabled(true);
-                    r2iv1.setEnabled(true);      r2iv2.setEnabled(true);      r2iv3.setEnabled(true);      r2iv4.setEnabled(true);      r2iv5.setEnabled(true);        r2iv6.setEnabled(true);
-                    r3iv1.setEnabled(true);      r3iv2.setEnabled(true);      r3iv3.setEnabled(true);      r3iv4.setEnabled(true);      r3iv5.setEnabled(true);        r3iv6.setEnabled(true);
-                    r4iv1.setEnabled(true);      r4iv2.setEnabled(true);      r4iv3.setEnabled(true);      r4iv4.setEnabled(true);      r4iv5.setEnabled(true);        r4iv6.setEnabled(true);
-                    r5iv1.setEnabled(true);      r5iv2.setEnabled(true);      r5iv3.setEnabled(true);      r5iv4.setEnabled(true);      r5iv5.setEnabled(true);        r5iv6.setEnabled(true);
-                    r6iv1.setEnabled(true);      r6iv2.setEnabled(true);      r6iv3.setEnabled(true);      r6iv4.setEnabled(true);      r6iv5.setEnabled(true);        r6iv6.setEnabled(true);
+                    resetAllValues();
+                    animateBackAll(true);
+                    enableAll(true);
+
 
                     mChronometer = new Chronometer3(mContext);
                     mThreadChrono = new Thread(mChronometer);
@@ -546,7 +526,6 @@ public class SixCrossSix extends AppCompatActivity {
             anime2.setInterpolator(new AccelerateInterpolator());
             anime2.setDuration(100);
 
-            isAnimationRunning=true;
             anime1.start();
 
             anime1.addListener(new AnimatorListenerAdapter() {
@@ -560,8 +539,7 @@ public class SixCrossSix extends AppCompatActivity {
                 }
             });
             newCardsFlipped++;
-            //Toast.makeText(getApplicationContext(),Integer.toString(previousInt),Toast.LENGTH_SHORT).show();
-            isAnimationRunning=false;
+
         }
 
         else if(newCardsFlipped==1)
@@ -578,7 +556,6 @@ public class SixCrossSix extends AppCompatActivity {
             anime2.setInterpolator(new AccelerateInterpolator());
             anime2.setDuration(100);
 
-            isAnimationRunning=true;
             anime1.start();
 
             anime1.addListener(new AnimatorListenerAdapter() {
@@ -591,7 +568,6 @@ public class SixCrossSix extends AppCompatActivity {
                     anime2.start();
                 }
             });
-            //Toast.makeText(getApplicationContext(), Integer.toString(currentInt), Toast.LENGTH_SHORT).show();
 
             newCardsFlipped++;
 
@@ -603,7 +579,6 @@ public class SixCrossSix extends AppCompatActivity {
                 public void run() {
                     if(currentInt!=previousInt)
                     {
-                        //Toast.makeText(getApplicationContext(),"Not equal",Toast.LENGTH_SHORT).show();
                         final ObjectAnimator anime11=ObjectAnimator.ofFloat(currentFlipped,"scaleX",1f,0f);
                         final ObjectAnimator anime22=ObjectAnimator.ofFloat(currentFlipped,"scaleX",0f,1f);
 
@@ -643,8 +618,10 @@ public class SixCrossSix extends AppCompatActivity {
 
                                 previousFlipped.setText("FRONT");
                                 anime44.start();
+
                             }
                         });
+                        newCardsFlipped=0;
                     }
                     else
                     {
@@ -655,8 +632,7 @@ public class SixCrossSix extends AppCompatActivity {
                         {
                             if (mChronometer.mIsRunning)
                             {
-                                total=0;
-                                co=0;
+                                resetAllValues();
                                 mChronometer.stop();
                                 mThreadChrono.interrupt();
                                 mChronometer=null;
@@ -684,32 +660,12 @@ public class SixCrossSix extends AppCompatActivity {
                                 play_again.setOnClickListener(new View.OnClickListener() {
                                     @Override
                                     public void onClick(View v) {
-                                        previousFlipped = null;
-                                        currentFlipped = null;
-                                        text_top.setText("00:000");
-
-                                        mChronometer=null;
-                                        previousInt = 0;
-                                        currentInt = 0;
-
-                                        newCardsFlipped = 0;
-                                        total = 0;
-                                        co = 0;
-
-                                        animateBack(r1iv1, !true);animateBack(r1iv2, !true);animateBack(r1iv3, !true);animateBack(r1iv4, !true);animateBack(r1iv5, !true);animateBack(r1iv6, !true);
-                                        animateBack(r2iv1, !true);animateBack(r2iv2, !true);animateBack(r2iv3, !true);animateBack(r2iv4, !true);animateBack(r2iv5, !true);animateBack(r2iv6, !true);
-                                        animateBack(r3iv1, !true);animateBack(r3iv2, !true);animateBack(r3iv3, !true);animateBack(r3iv4, !true);animateBack(r3iv5, !true);animateBack(r3iv6, !true);
-                                        animateBack(r4iv1, !true);animateBack(r4iv2, !true);animateBack(r4iv3, !true);animateBack(r4iv4, !true);animateBack(r4iv5, !true);animateBack(r4iv6, !true);
-                                        animateBack(r5iv1, !true);animateBack(r5iv2, !true);animateBack(r5iv3, !true);animateBack(r5iv4, !true);animateBack(r5iv5, !true);animateBack(r5iv6, !true);
-                                        animateBack(r6iv1, !true);animateBack(r6iv2, !true);animateBack(r6iv3, !true);animateBack(r6iv4, !true);animateBack(r6iv5, !true);animateBack(r6iv6, !true);
-
+                                        animateBackAll(false);
+                                        resetAllValues();
                                         start_button.setEnabled(true);
                                         d.dismiss();
                                     }
                                 });
-
-
-
 
                             }
                         }
@@ -718,8 +674,42 @@ public class SixCrossSix extends AppCompatActivity {
             },350);
 
             newCardsFlipped=0;
-            isAnimationRunning=false;
         }
+    }
+
+    void enableAll(boolean b)
+    {
+        r1iv1.setEnabled(b);    r1iv2.setEnabled(b);    r1iv3.setEnabled(b);    r1iv4.setEnabled(b);    r1iv5.setEnabled(b);    r1iv6.setEnabled(b);
+        r2iv1.setEnabled(b);    r2iv2.setEnabled(b);    r2iv3.setEnabled(b);    r2iv4.setEnabled(b);    r2iv5.setEnabled(b);    r2iv6.setEnabled(b);
+        r3iv1.setEnabled(b);    r3iv2.setEnabled(b);    r3iv3.setEnabled(b);    r3iv4.setEnabled(b);    r3iv5.setEnabled(b);    r3iv6.setEnabled(b);
+        r4iv1.setEnabled(b);    r4iv2.setEnabled(b);    r4iv3.setEnabled(b);    r4iv4.setEnabled(b);    r4iv5.setEnabled(b);    r4iv6.setEnabled(b);
+        r5iv1.setEnabled(b);    r5iv2.setEnabled(b);    r5iv3.setEnabled(b);    r5iv4.setEnabled(b);    r5iv5.setEnabled(b);    r5iv6.setEnabled(b);
+        r6iv1.setEnabled(b);    r6iv2.setEnabled(b);    r6iv3.setEnabled(b);    r6iv4.setEnabled(b);    r6iv5.setEnabled(b);    r6iv6.setEnabled(b);
+    }
+
+    void animateBackAll(boolean b)
+    {
+        animateBack(r1iv1,b);   animateBack(r1iv2,b);   animateBack(r1iv3,b);   animateBack(r1iv4,b);   animateBack(r1iv5,b);   animateBack(r1iv6,b);
+        animateBack(r2iv1,b);   animateBack(r2iv2,b);   animateBack(r2iv3,b);   animateBack(r2iv4,b);   animateBack(r2iv5,b);   animateBack(r2iv6,b);
+        animateBack(r3iv1,b);   animateBack(r3iv2,b);   animateBack(r3iv3,b);   animateBack(r3iv4,b);   animateBack(r3iv5,b);   animateBack(r3iv6,b);
+        animateBack(r4iv1,b);   animateBack(r4iv2,b);   animateBack(r4iv3,b);   animateBack(r4iv4,b);   animateBack(r4iv5,b);   animateBack(r4iv6,b);
+        animateBack(r5iv1,b);   animateBack(r5iv2,b);   animateBack(r5iv3,b);   animateBack(r5iv4,b);   animateBack(r5iv5,b);   animateBack(r5iv6,b);
+        animateBack(r6iv1,b);   animateBack(r6iv2,b);   animateBack(r6iv3,b);   animateBack(r6iv4,b);   animateBack(r6iv5,b);   animateBack(r6iv6,b);
+    }
+
+    void resetAllValues()
+    {
+        previousFlipped = null;
+        currentFlipped = null;
+        previousInt = 0;
+        currentInt = 0;
+
+        newCardsFlipped = 0;
+        total = 0;
+        co = 0;
+
+        text_below.setText("Press start to begin level");
+        text_top.setText("00:000");
     }
 
     public void disappear(Button btn)
@@ -727,11 +717,9 @@ public class SixCrossSix extends AppCompatActivity {
         final ObjectAnimator animex=ObjectAnimator.ofFloat(btn,"alpha",1f,0f);
         animex.setInterpolator(new DecelerateInterpolator());
         animex.setDuration(100);
-
         animex.start();
         btn.setEnabled(false);
     }
-
 
     public void onBackPressed(){
         final Dialog d=new Dialog(SixCrossSix.this);
@@ -742,6 +730,12 @@ public class SixCrossSix extends AppCompatActivity {
         YES.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                if(mChronometer!=null)
+                {
+                    mThreadChrono.interrupt();
+                    mChronometer.stop();
+                    mChronometer=null;
+                }
                 SixCrossSix.super.onBackPressed();
             }
         });
@@ -779,25 +773,11 @@ public class SixCrossSix extends AppCompatActivity {
                 NO.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
-
-                        animateBack(r1iv1,false);     animateBack(r1iv2,false);     animateBack(r1iv3,false);     animateBack(r1iv4,false);     animateBack(r1iv5,false);     animateBack(r1iv6,false);
-                        animateBack(r2iv1,false);     animateBack(r2iv2,false);     animateBack(r2iv3,false);     animateBack(r2iv4,false);     animateBack(r2iv5,false);     animateBack(r2iv6,false);
-                        animateBack(r3iv1,false);     animateBack(r3iv2,false);     animateBack(r3iv3,false);     animateBack(r3iv4,false);     animateBack(r3iv5,false);     animateBack(r3iv6,false);
-                        animateBack(r4iv1,false);     animateBack(r4iv2,false);     animateBack(r4iv3,false);     animateBack(r4iv4,false);     animateBack(r4iv5,false);     animateBack(r4iv6,false);
-                        animateBack(r5iv1,false);     animateBack(r5iv2,false);     animateBack(r5iv3,false);     animateBack(r5iv4,false);     animateBack(r5iv5,false);     animateBack(r5iv6,false);
-                        animateBack(r6iv1,false);     animateBack(r6iv2,false);     animateBack(r6iv3,false);     animateBack(r6iv4,false);     animateBack(r6iv5,false);     animateBack(r6iv6,false);
-
-                        text_top.setText("00:000");
-                        previousFlipped=null;
-                        currentFlipped=null;
-                        previousInt=0;
-                        text_below.setText("Number of times button pressed=0");
-                        currentInt=0;
-                        newCardsFlipped=0;
+                        animateBackAll(false);
+                        resetAllValues();
+                        mChronometer.stop();
                         mChronometer=null;
                         mThreadChrono.interrupt();
-                        total=0;
-                        co=0;
                         d.dismiss();
                     }
                 });

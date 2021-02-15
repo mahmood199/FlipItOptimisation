@@ -72,7 +72,7 @@ public class TwoCrossTwo extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 co++;
-                if((!isAnimationRunning) && (newCardsFlipped==0 || previousFlipped!=row1iv1))
+                if((!isAnimationRunning) && (newCardsFlipped<2 || previousFlipped!=row1iv1))
                     flip(row1iv1,a[0]);
                 text_below.setText("Number of times button pressed:"+co+"\n");
             }
@@ -82,7 +82,7 @@ public class TwoCrossTwo extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 co++;
-                if((!isAnimationRunning) && (newCardsFlipped==0 || previousFlipped!=row1iv2))
+                if((!isAnimationRunning) && (newCardsFlipped<2 || previousFlipped!=row1iv2))
                     flip(row1iv2,a[1]);
                 text_below.setText("Number of times button pressed:"+co+"\n");
             }
@@ -91,7 +91,7 @@ public class TwoCrossTwo extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 co++;
-                if((!isAnimationRunning) && (newCardsFlipped==0 || previousFlipped!=row2iv1))
+                if((!isAnimationRunning) && (newCardsFlipped<2 || previousFlipped!=row2iv1))
                     flip(row2iv1,a[2]);
                 text_below.setText("Number of times button pressed:"+co+"\n");
             }
@@ -102,16 +102,13 @@ public class TwoCrossTwo extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 co++;
-                if((!isAnimationRunning) && (newCardsFlipped==0 || previousFlipped!=row2iv2))
+                if((!isAnimationRunning) && (newCardsFlipped<2 || previousFlipped!=row2iv2))
                     flip(row2iv2,a[3]);
                 text_below.setText("Number of times button pressed:"+co+"\n");
             }
         });
 
-        row1iv1.setEnabled(false);
-        row1iv2.setEnabled(false);
-        row2iv1.setEnabled(false);
-        row2iv2.setEnabled(false);
+        enableAll(false);
 
 
         start.setOnClickListener(new View.OnClickListener() {
@@ -120,29 +117,19 @@ public class TwoCrossTwo extends AppCompatActivity {
 
                 if(mChronometer==null) {
 
-                    previousFlipped = null;
-                    currentFlipped = null;
-                    previousInt = 0;
-                    currentInt = 0;
-
-                    newCardsFlipped = 0;
-                    total = 0;
-                    co = 0;
-
-                    int i, j, n = 4, temp;
-                    Random rand = new Random();
-                    for (i = n - 1 ; i > 0 ; i--)      //Fisher Yates Algorithm
+                    for (int n=4,i = n - 1 ; i > 0 ; i--)      //Fisher Yates Algorithm
                     {
-                        j = rand.nextInt(i);
-                        temp = a[j];
+                        Random rand = new Random();
+                        int j = rand.nextInt(i);
+                        int temp = a[j];
                         a[j] = a[i];
                         a[i] = temp;
                     }
 
-                    animateBack(row1iv1, true);
-                    animateBack(row1iv2, true);
-                    animateBack(row2iv1, true);
-                    animateBack(row2iv2, true);
+
+                    resetAllValues();
+                    animateBackAll(true);
+                    enableAll(true);
 
                     mChronometer = new Chronometer2(mContext);
                     mThreadChrono = new Thread(mChronometer);
@@ -152,8 +139,6 @@ public class TwoCrossTwo extends AppCompatActivity {
             }
         });
     }
-
-
 
     void flip(Button Btn,int num)
     {
@@ -183,7 +168,6 @@ public class TwoCrossTwo extends AppCompatActivity {
                     anime2.start();
                 }
             });
-
             newCardsFlipped++;
 
         }
@@ -226,7 +210,6 @@ public class TwoCrossTwo extends AppCompatActivity {
                 public void run() {
                     if(currentInt!=previousInt)
                     {
-                        //Toast.makeText(getApplicationContext(),"Not equal",Toast.LENGTH_SHORT).show();
                         final ObjectAnimator anime11=ObjectAnimator.ofFloat(currentFlipped,"scaleX",1f,0f);
                         final ObjectAnimator anime22=ObjectAnimator.ofFloat(currentFlipped,"scaleX",0f,1f);
 
@@ -277,8 +260,7 @@ public class TwoCrossTwo extends AppCompatActivity {
                         {
                             if(mChronometer.mIsRunning)
                             {
-                                total=0;
-                                co=0;
+                                resetAllValues();
                                 mChronometer.stop();
                                 mThreadChrono.interrupt();
                                 mChronometer=null;
@@ -305,21 +287,8 @@ public class TwoCrossTwo extends AppCompatActivity {
                                 play_again.setOnClickListener(new View.OnClickListener() {
                                     @Override
                                     public void onClick(View v) {
-                                        previousFlipped = null;
-                                        timer.setText("00:000");
-                                        currentFlipped = null;
-                                        previousInt = 0;
-                                        currentInt = 0;
-
-                                        newCardsFlipped = 0;
-                                        total = 0;
-                                        co = 0;
-
-                                        animateBack(row1iv1, !true);
-                                        animateBack(row1iv2, !true);
-                                        animateBack(row2iv1, !true);
-                                        animateBack(row2iv2, !true);
-
+                                        animateBackAll(false);
+                                        resetAllValues();
                                         start.setEnabled(true);
                                         d.dismiss();
                                     }
@@ -334,17 +303,41 @@ public class TwoCrossTwo extends AppCompatActivity {
                                     }
                                 });
 
-
                             }
-
                         }
                     }
                 }
             },350);
 
             newCardsFlipped=0;
-
         }
+    }
+
+    void enableAll(boolean b)
+    {
+        row1iv1.setEnabled(b);      row1iv2.setEnabled(b);
+        row2iv1.setEnabled(b);      row2iv2.setEnabled(b);
+    }
+
+    void animateBackAll(boolean b)
+    {
+        animateBack(row1iv1, b);        animateBack(row1iv2, b);
+        animateBack(row2iv1, b);        animateBack(row2iv2, b);
+    }
+
+    void resetAllValues()
+    {
+        previousFlipped = null;
+        currentFlipped = null;
+        previousInt = 0;
+        currentInt = 0;
+
+        newCardsFlipped = 0;
+        total = 0;
+        co = 0;
+
+        text_below.setText("Press start to begin level");
+        timer.setText("00:000");
     }
 
     public void disappear(Button btn)
@@ -352,7 +345,6 @@ public class TwoCrossTwo extends AppCompatActivity {
         final ObjectAnimator animex=ObjectAnimator.ofFloat(btn,"alpha",1f,0f);
         animex.setInterpolator(new DecelerateInterpolator());
         animex.setDuration(100);
-
         animex.start();
         btn.setEnabled(false);
     }
@@ -365,7 +357,15 @@ public class TwoCrossTwo extends AppCompatActivity {
         Button YES= (Button) d.findViewById(R.id.yes);
         Button NO=  (Button) d.findViewById(R.id.no);
         YES.setOnClickListener(new View.OnClickListener() {
-            public void onClick(View v) { TwoCrossTwo.super.onBackPressed(); }});
+            public void onClick(View v) {
+                if(mChronometer!=null)
+                {
+                    mThreadChrono.interrupt();
+                    mChronometer.stop();
+                    mChronometer=null;
+                }
+                TwoCrossTwo.super.onBackPressed();
+            }});
         NO.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -401,28 +401,19 @@ public class TwoCrossTwo extends AppCompatActivity {
                 NO.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
-                        animateBack(row1iv1,false);     animateBack(row1iv2,false);
-                        animateBack(row2iv1,false);     animateBack(row2iv2,false);
-
-                        timer.setText("00:000");
-                        previousFlipped=null;
-                        currentFlipped=null;
-                        previousInt=0;
-                        currentInt=0;
-                        text_below.setText("Number of times button pressed=0");
-                        newCardsFlipped=0;
+                        animateBackAll(false);
+                        resetAllValues();
+                        mChronometer.stop();
                         mChronometer=null;
                         mThreadChrono.interrupt();
-                        total=0;
-                        co=0;
                         d.dismiss();
                     }
                 });
 
-
             }
         });
     }
+
 
     void animateBack(final Button btn,boolean enable)
     {
