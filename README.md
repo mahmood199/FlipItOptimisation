@@ -40,4 +40,3 @@ Features that i would add in near future
 1) Realtime dynamic leaderboard for best time
 2) Google Authentication
 3) Personal best time for every use ron their device
-4) *I hope to put this on play store by April 2021*
